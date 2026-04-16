@@ -22,7 +22,7 @@ config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://Sound/bus_layout.tres"
+buses/default_bus_layout="uid://cbfti2pxoqkyn"
 
 [autoload]
 

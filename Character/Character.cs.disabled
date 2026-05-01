@@ -8,8 +8,6 @@ public partial class Character : CharacterBody2D
 {
     private dynamic N(string path) => GetNode(path);
 
-
-
     dynamic speed = Vector2.Zero;
 
     public dynamic legs;

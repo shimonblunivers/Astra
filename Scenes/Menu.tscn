@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5j5hom1cj2vl"]
+[gd_scene format=3 uid="uid://c5j5hom1cj2vl"]
 
-[ext_resource type="Script" path="res://Menu.gd" id="1_jp1hi"]
+[ext_resource type="Script" uid="uid://bb0dyhvihyfjb" path="res://Menu.gd" id="1_jp1hi"]
 [ext_resource type="FontFile" uid="uid://dbekrgkvpg3lc" path="res://Fonts/SpaceMono-Bold.ttf" id="2_ese6g"]
-[ext_resource type="Shader" path="res://UI/BackgroundMenuScroll.gdshader" id="2_sn0i0"]
+[ext_resource type="Shader" uid="uid://cb6vhyfr81kji" path="res://UI/BackgroundMenuScroll.gdshader" id="2_sn0i0"]
 [ext_resource type="Texture2D" uid="uid://dkwpkswggbn7r" path="res://Backgrounds/further_bodies.png" id="2_vln5c"]
 [ext_resource type="Texture2D" uid="uid://dhvixcsrhu5oc" path="res://Backgrounds/closer_bodies.png" id="3_j5d5y"]
 [ext_resource type="Theme" uid="uid://bdiaebe5x6sb5" path="res://UI/MenuTheme.tres" id="4_buhup"]
@@ -20,17 +20,17 @@ shader_parameter/speed_divider = 10.0
 [sub_resource type="Theme" id="Theme_y0au3"]
 Button/font_sizes/font_size = 32
 
-[node name="Menu" type="CanvasLayer"]
+[node name="Menu" type="CanvasLayer" unique_id=915835650]
 process_mode = 3
 layer = 3
 script = ExtResource("1_jp1hi")
 
-[node name="Gray" type="ColorRect" parent="."]
+[node name="Gray" type="ColorRect" parent="." unique_id=523424827]
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 0.392157)
 
-[node name="FurtherBackground" type="TextureRect" parent="."]
+[node name="FurtherBackground" type="TextureRect" parent="." unique_id=311729575]
 light_mask = 0
 material = SubResource("ShaderMaterial_6xyd5")
 anchors_preset = 8
@@ -47,7 +47,7 @@ grow_vertical = 2
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_vln5c")
 
-[node name="CloserBackground" type="TextureRect" parent="."]
+[node name="CloserBackground" type="TextureRect" parent="." unique_id=1473313303]
 light_mask = 0
 material = SubResource("ShaderMaterial_obinj")
 anchors_preset = 8
@@ -64,14 +64,14 @@ grow_vertical = 2
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_j5d5y")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=873569741]
 light_mask = 0
 offset_top = 119.0
 offset_right = 1280.0
 offset_bottom = 839.0
 theme = SubResource("Theme_y0au3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1625201719]
 light_mask = 0
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -80,28 +80,28 @@ size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1468586524]
 light_mask = 0
 layout_mode = 2
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
-text = "Hrát"
+text = "Play"
 
-[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1554523788]
 light_mask = 0
 layout_mode = 2
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
-text = "Nová hra"
+text = "New game"
 
-[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1087153457]
 light_mask = 0
 layout_mode = 2
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
-text = "Nastavení"
+text = "Settings"
 
-[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer" unique_id=40463317]
 light_mask = 0
 layout_mode = 2
 theme = ExtResource("4_buhup")
@@ -109,14 +109,14 @@ theme_override_fonts/font = ExtResource("2_ese6g")
 text = "Credits
 "
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=175936309]
 light_mask = 0
 layout_mode = 2
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
-text = "Odejít"
+text = "Quit"
 
-[node name="Title" type="TextureRect" parent="."]
+[node name="Title" type="TextureRect" parent="." unique_id=159068348]
 light_mask = 0
 anchors_preset = 5
 anchor_left = 0.5
@@ -128,7 +128,7 @@ offset_bottom = 256.0
 grow_horizontal = 2
 texture = ExtResource("7_ecqpl")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=776938874]
 process_mode = 3
 stream = ExtResource("8_k53lv")
 bus = &"Music"

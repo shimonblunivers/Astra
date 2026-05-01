@@ -1,19 +1,19 @@
 class_name ShipEditor extends Node2D
 
 
-@onready var console : Console = $"../HUD/Console/ConsoleLog"
+@onready var console: Console = $"../HUD/Console/ConsoleLog"
 @onready var wall_tile_map := $WallTileMap
 @onready var object_tile_map := $ObjectTileMap
 
 static var instance
 static var tool_preview
-var inventory : Inventory
+var inventory: Inventory
 
 static var directions = {
-	0 : "doprava",
-	1 : "dolů",
-	2 : "doleva",
-	3 : "nahoru",
+	0: "right",
+	1: "down",
+	2: "left",
+	3: "up",
 }
 
 static var direction := 0
@@ -22,9 +22,9 @@ static var autoflooring = false
 
 static var tools := {}
 
-static var tool : Tool = null
+static var tool: Tool = null
 
-static var current_ship_price : int = 0
+static var current_ship_price: int = 0
 
 static var starting_block_coords = Vector2.ZERO
 
@@ -69,7 +69,7 @@ func _ready() -> void:
 	update_preview.call_deferred()
 	
 func update_preview():
-	Editor.instance.direction_label.text = "Směr: " + directions[direction]
+	Editor.instance.direction_label.text = "Direction: " + directions[direction]
 	ShipEditor.update_preview_rotation()
 
 
@@ -87,11 +87,11 @@ func load_tools():
 					load(path + "/" + file_name).create()
 			file_name = dir.get_next()
 
-static func get_mouse_tile(tilemap : TileMapLayer) -> Vector2i:
+static func get_mouse_tile(tilemap: TileMapLayer) -> Vector2i:
 	return tilemap.local_to_map(instance.to_local(instance.get_global_mouse_position()))
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion || event is InputEventMouseButton: 
+	if event is InputEventMouseMotion || event is InputEventMouseButton:
 		if event.button_mask == 1:
 			use_tool()
 		elif event.button_mask == 2 && (!ShipValidator.get_tile_type(wall_tile_map, ShipEditor.get_mouse_tile(wall_tile_map)) == "connector" || Options.DEVELOPMENT_MODE):
@@ -107,8 +107,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func use_tool() -> void:
 	if tool == null: return
 	if !Options.DEVELOPMENT_MODE && !(tool.number_of_instances < tool.world_limit || tool.world_limit < 0): return
-	var tilemap : TileMapLayer = object_tile_map if tool.object else wall_tile_map
-	var tile : Vector2i = ShipEditor.get_mouse_tile(tilemap)
+	var tilemap: TileMapLayer = object_tile_map if tool.object else wall_tile_map
+	var tile: Vector2i = ShipEditor.get_mouse_tile(tilemap)
 	if ShipValidator.get_tile_type(tilemap, tile) == tool.name: return
 	var placing_on_something = false
 	if tool.placeable_on_atlas_choords != Vector2i(-1, -1):
@@ -128,14 +128,14 @@ func use_tool() -> void:
 		tilemap.set_cells_terrain_connect([tile], 0, -1, false)
 
 	if tool.terrain_id != -1:
-		tilemap.set_cells_terrain_connect([tile], 0, tool.terrain_id)	
+		tilemap.set_cells_terrain_connect([tile], 0, tool.terrain_id)
 	elif tool.atlas_coords != Vector2i(-1, -1):
 		tilemap.set_cell(tile, 0, tool.atlas_coords, direction if tool.rotatable else 0)
 
 	if tool.name in ShipValidator.walls && autoflooring:
 		ShipValidator.autofill_floor(tilemap)
 
-static func sell_tile(tilemap : TileMapLayer, coords : Vector2i, delete_tile := true, react_autofill := false) -> bool:
+static func sell_tile(tilemap: TileMapLayer, coords: Vector2i, delete_tile := true, react_autofill := false) -> bool:
 	var sold = false
 	var type = ShipValidator.get_tile_type(tilemap, coords)
 
@@ -151,7 +151,7 @@ static func sell_tile(tilemap : TileMapLayer, coords : Vector2i, delete_tile := 
 
 	return sold
 
-static func change_tool(key : String) -> void:
+static func change_tool(key: String) -> void:
 	tool = tools[key]
 	tool_preview.texture = tool.texture
 	update_preview_rotation()
@@ -162,10 +162,10 @@ static func update_preview_rotation():
 	else:
 		tool_preview.rotation_degrees = 0
 	
-func save_ship(path : String = "_default_ship") -> void:
+func save_ship(path: String = "_default_ship") -> void:
 	evide_tiles()
 
-	var location : String
+	var location: String
 
 	if path.begins_with("_"): location = "res://DefaultSave/ships/"
 	else: location = "user://saves/ships/"
@@ -177,20 +177,20 @@ func save_ship(path : String = "_default_ship") -> void:
 	var details_save_file := FileAccess.open(location + path + "/details.dat", FileAccess.WRITE)
 	
 	for cell in wall_tile_map.get_used_cells():
-		walls_save_file.store_float(cell.x)	# 0
-		walls_save_file.store_float(cell.y)	# 1
-		walls_save_file.store_16(wall_tile_map.get_cell_source_id(Vector2i(cell.x, cell.y)))	# 2
-		walls_save_file.store_float(wall_tile_map.get_cell_atlas_coords(Vector2i(cell.x, cell.y)).x)	# 3
-		walls_save_file.store_float(wall_tile_map.get_cell_atlas_coords(Vector2i(cell.x, cell.y)).y)	# 4
-		walls_save_file.store_16(wall_tile_map.get_cell_alternative_tile(Vector2i(cell.x, cell.y)))	# 5
+		walls_save_file.store_float(cell.x) # 0
+		walls_save_file.store_float(cell.y) # 1
+		walls_save_file.store_16(wall_tile_map.get_cell_source_id(Vector2i(cell.x, cell.y))) # 2
+		walls_save_file.store_float(wall_tile_map.get_cell_atlas_coords(Vector2i(cell.x, cell.y)).x) # 3
+		walls_save_file.store_float(wall_tile_map.get_cell_atlas_coords(Vector2i(cell.x, cell.y)).y) # 4
+		walls_save_file.store_16(wall_tile_map.get_cell_alternative_tile(Vector2i(cell.x, cell.y))) # 5
 		
 	for cell in object_tile_map.get_used_cells():
-		objects_save_file.store_float(cell.x)	# 0
-		objects_save_file.store_float(cell.y)	# 1
-		objects_save_file.store_16(object_tile_map.get_cell_source_id(Vector2i(cell.x, cell.y)))	# 2
-		objects_save_file.store_float(object_tile_map.get_cell_atlas_coords(Vector2i(cell.x, cell.y)).x)	# 3
-		objects_save_file.store_float(object_tile_map.get_cell_atlas_coords(Vector2i(cell.x, cell.y)).y)	# 4
-		objects_save_file.store_16(object_tile_map.get_cell_alternative_tile(Vector2i(cell.x, cell.y)))	# 5
+		objects_save_file.store_float(cell.x) # 0
+		objects_save_file.store_float(cell.y) # 1
+		objects_save_file.store_16(object_tile_map.get_cell_source_id(Vector2i(cell.x, cell.y))) # 2
+		objects_save_file.store_float(object_tile_map.get_cell_atlas_coords(Vector2i(cell.x, cell.y)).x) # 3
+		objects_save_file.store_float(object_tile_map.get_cell_atlas_coords(Vector2i(cell.x, cell.y)).y) # 4
+		objects_save_file.store_16(object_tile_map.get_cell_alternative_tile(Vector2i(cell.x, cell.y))) # 5
 
 	details_save_file.store_16(current_ship_price)
 
@@ -198,11 +198,10 @@ func save_ship(path : String = "_default_ship") -> void:
 	objects_save_file.close()
 	details_save_file.close()
 	
-	console.print_out("Uložena loď s názvem: " + path)
+	console.print_out("Ship saved as: " + path)
 	
-func load_ship(path : String = "_default_ship", charge := true) -> bool:
-
-	var location : String
+func load_ship(path: String = "_default_ship", charge := true) -> bool:
+	var location: String
 
 	if path.begins_with("_"): location = "res://DefaultSave/ships/"
 	else: location = "user://saves/ships/"
@@ -219,7 +218,6 @@ func load_ship(path : String = "_default_ship", charge := true) -> bool:
 	# 	var price = details.get_16()
 		
 
-
 	wall_tile_map.clear()
 	object_tile_map.clear()
 	
@@ -230,14 +228,14 @@ func load_ship(path : String = "_default_ship", charge := true) -> bool:
 	
 	while walls_save_file.get_position() != walls_save_file.get_length():
 		contents = [walls_save_file.get_float(), walls_save_file.get_float(), walls_save_file.get_16(), walls_save_file.get_float(), walls_save_file.get_float(), walls_save_file.get_16()]
-		var tile:= Vector2()
+		var tile := Vector2()
 		tile.x = contents[0]
 		tile.y = contents[1]
 		wall_tile_map.set_cell(tile, contents[2], Vector2i(contents[3], contents[4]), contents[5])
 
 	while objects_save_file.get_position() != objects_save_file.get_length():
 		contents = [objects_save_file.get_float(), objects_save_file.get_float(), objects_save_file.get_16(), objects_save_file.get_float(), objects_save_file.get_float(), objects_save_file.get_16()]
-		var tile:= Vector2()
+		var tile := Vector2()
 		tile.x = contents[0]
 		tile.y = contents[1]
 		object_tile_map.set_cell(tile, contents[2], Vector2i(contents[3], contents[4]), contents[5])
@@ -247,9 +245,9 @@ func load_ship(path : String = "_default_ship", charge := true) -> bool:
 
 	evide_tiles()
 
-	if charge: 
+	if charge:
 		inventory.currency -= current_ship_price
 	inventory.currency_value.text = str(inventory.currency)
 	
-	console.print_out("Načtena loď s názvem: " + path)
+	console.print_out("Ship loaded: " + path)
 	return true

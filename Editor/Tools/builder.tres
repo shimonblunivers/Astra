@@ -10,7 +10,7 @@ region = Rect2(48, 0, 16, 16)
 [resource]
 script = ExtResource("1_vf24i")
 name = "builder"
-nickname = "Editor"
+nickname = "Builder"
 texture = SubResource("AtlasTexture_nhj2g")
 price = 0
 rotatable = false

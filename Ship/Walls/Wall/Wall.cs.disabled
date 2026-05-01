@@ -28,78 +28,78 @@ public partial class Wall : ShipPart
 
     public void init(dynamic _ship, Vector2I _coords, float _durability = 100, float _mass = 4)
     {
-    super(_ship, _coords, _durability, _mass);
+        super(_ship, _coords, _durability, _mass);
 
     }
 
     public override void _Ready()
     {
-    hp.MaxValue = durability_max;
-    hp.Value = durability_max;
+        hp.MaxValue = durability_max;
+        hp.Value = durability_max;
 
     }
 
     public void set_texture(dynamic texture)
     {
-    sprite.Texture = texture;
+        sprite.Texture = texture;
 
     }
 
     public void _on_button_pressed()
     {
-    if (Options.DEVELOPMENT_MODE)
-    {
+        if (Options.DEVELOPMENT_MODE)
+        {
         }
-    damage(25);
+        damage(25);
 
     }
 
     public void damage(float dmg)
     {
 
-    durability_current -= dmg;
+        durability_current -= dmg;
 
-    button.TooltipText = str(Mathf.Snapped(durability_current / durability_max, 0.01)) + "%";
+        button.TooltipText = str(Mathf.Snapped(durability_current / durability_max, 0.01)) + "%";
 
-    switch (durability_current / durability_max)
-    {
+        switch (durability_current / durability_max)
+        {
         }
     case 1:
         }
-    cracks.Frame = 0;
+        cracks.Frame = 0;
     case 0.75:
         }
-    cracks.Frame = 1;
+        cracks.Frame = 1;
     case 0.5:
         }
-    cracks.Frame = 2;
+        cracks.Frame = 2;
     case 0.25:
         }
-    cracks.Frame = 3;
+        cracks.Frame = 3;
 
-    hp.Value = durability_current;
-    if ((durability_current <= 0))
-    {
+        hp.Value = durability_current;
+        if ((durability_current <= 0))
+        {
         }
-    destroy();
+        destroy();
 
 
     }
 
     public void destroy()
     {
-    _debris_object := debris_scene.Instantiate();
+    _debris_object:= debris_scene.Instantiate();
 
-    ship.destroyed_walls.append(tilemap_coords);
+        ship.destroyed_walls.append(tilemap_coords);
 
-    _debris_object.init(ship, tilemap_coords);
-    _debris_object.Position = position;
+        _debris_object.init(ship, tilemap_coords);
+        _debris_object.Position = position;
 
-    get_parent().add_child.CallDeferred(_debris_object);
-    dynamic _pos = ship.wall_tile_map.local_to_map(position);
-    ship.wall_tile_map.set_cells_terrain_connect([_pos] , 0, -1, false);
+        get_parent().add_child.CallDeferred(_debris_object);
+        dynamic _pos = ship.wall_tile_map.local_to_map(position);
+        ship.wall_tile_map.set_cells_terrain_connect([_pos], 0, -1, false);
 
-    remove();
+        remove();
     }
 
 }

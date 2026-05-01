@@ -11,8 +11,8 @@ item_type = "Chip"
 [resource]
 script = ExtResource("2_nbdt4")
 id = 0
-title = "Povidlový čaj"
-description = "Přines recept na prastarý povidlový čaj."
+title = "Powidl tea"
+description = "Bring the recipe for the ancient powidl tea."
 reward = 700
 goal = SubResource("Resource_o3qrs")
 world_limit = -1

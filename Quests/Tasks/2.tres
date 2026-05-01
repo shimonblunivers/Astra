@@ -11,8 +11,8 @@ item_type = "Radio"
 [resource]
 script = ExtResource("1_64x7q")
 id = 2
-title = "Neznámý signál"
-description = "Prověř zdroj signálu."
+title = "Unknown Signal"
+description = "Investigate the source of the signal."
 reward = 900
 goal = SubResource("Resource_1a4uf")
 world_limit = -1

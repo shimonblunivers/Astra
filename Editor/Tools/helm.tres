@@ -10,7 +10,7 @@ region = Rect2(32, 0, 16, 16)
 [resource]
 script = ExtResource("1_rmmrs")
 name = "helm"
-nickname = "Kormidlo"
+nickname = "Helm"
 texture = SubResource("AtlasTexture_nhj2g")
 price = 250
 rotatable = false

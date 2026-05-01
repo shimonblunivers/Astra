@@ -10,7 +10,7 @@ region = Rect2(32, 16, 16, 16)
 [resource]
 script = ExtResource("1_nhijo")
 name = "npc"
-nickname = "Npc"
+nickname = "NPC"
 texture = SubResource("AtlasTexture_nhj2g")
 price = 0
 rotatable = false

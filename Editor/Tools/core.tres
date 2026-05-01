@@ -10,7 +10,7 @@ region = Rect2(128, 64, 32, 32)
 [resource]
 script = ExtResource("1_03gj1")
 name = "core"
-nickname = "Jádro"
+nickname = "Core"
 texture = SubResource("AtlasTexture_8hg4w")
 price = 2000
 rotatable = false

@@ -10,7 +10,7 @@ region = Rect2(128, 0, 32, 32)
 [resource]
 script = ExtResource("1_r63wp")
 name = "door"
-nickname = "Dveře"
+nickname = "Door"
 texture = SubResource("AtlasTexture_qa7tw")
 price = 500
 rotatable = false

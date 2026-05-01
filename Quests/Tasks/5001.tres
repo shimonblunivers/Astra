@@ -11,8 +11,8 @@ item_type = "Gum"
 [resource]
 script = ExtResource("2_6ke6j")
 id = 5001
-title = "Potřeby [2]"
-description = "Přines žvýkačku."
+title = "Needs [2]"
+description = "Bring a piece of gum."
 reward = 600
 goal = SubResource("Resource_8rhqi")
 world_limit = -1

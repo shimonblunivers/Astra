@@ -11,8 +11,8 @@ item_type = "Bonbons"
 [resource]
 script = ExtResource("1_altdo")
 id = 6
-title = "Bonbóny"
-description = "Přines balíček bonbónů."
+title = "Bonbons"
+description = "Bring a packet of bonbons."
 reward = 650
 goal = SubResource("Resource_al30g")
 world_limit = 1

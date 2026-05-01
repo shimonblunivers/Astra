@@ -10,7 +10,7 @@ region = Rect2(0, 0, 32, 32)
 [resource]
 script = ExtResource("1_fdvbj")
 name = "floor"
-nickname = "Podlaha"
+nickname = "Floor"
 texture = SubResource("AtlasTexture_t8hnt")
 price = 0
 rotatable = false

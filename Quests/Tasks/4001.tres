@@ -11,8 +11,8 @@ item_type = "Disk"
 [resource]
 script = ExtResource("1_y1w3f")
 id = 4001
-title = "Kódovaný disk [2]"
-description = "Přines kódovaný disk."
+title = "Encoded Disk [2]"
+description = "Bring the encoded disk."
 reward = 1600
 goal = SubResource("Resource_ftbcn")
 world_limit = 1

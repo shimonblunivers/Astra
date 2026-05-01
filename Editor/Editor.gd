@@ -1,17 +1,17 @@
 class_name Editor extends Node2D
 
 
-@onready var console : Console = $HUD/Console/ConsoleLog
-@onready var ship_editor : ShipEditor = $Ship
+@onready var console: Console = $HUD/Console/ConsoleLog
+@onready var ship_editor: ShipEditor = $Ship
 @onready var savemenu := $HUD/SavemenuUI
 
 @onready var camera := $Camera2D
 
-@onready var ship_name_label : LineEdit = $HUD/SavemenuUI/ShipName
+@onready var ship_name_label: LineEdit = $HUD/SavemenuUI/ShipName
 
 @onready var ship_list := $HUD/SavemenuUI/Control/ShipList
 
-@onready var inventory : Inventory = $HUD/Inventory
+@onready var inventory: Inventory = $HUD/Inventory
 
 @onready var direction_label = $HUD/DirectionLabel
 @onready var limit_rect = $LimitRect
@@ -72,12 +72,11 @@ func _ready():
 	center_camera()
 
 	
-
 func _on_save_pressed() -> void:
-	if !ShipValidator.check_validity(ship_editor.wall_tile_map): 
-		ship_editor.console.print_out("[color=red]Loď nesplňuje podmínky pro uložení![/color]\nZkontrolujte, zda máte v lodi jádro.\nTaké zkontrolujte zda jsou všechny bloky spojeny.")
-		return 
-	if (ship_name_label.text == ""): 
+	if !ShipValidator.check_validity(ship_editor.wall_tile_map):
+		ship_editor.console.print_out("[color=red]Ship does not meet the requirements for saving![/color]\nPlease check that you have a core in your ship.\nAlso check that all blocks are connected.")
+		return
+	if (ship_name_label.text == ""):
 		ship_editor.save_ship()
 		_update_ship_list()
 		return
@@ -94,14 +93,14 @@ func _update_ship_list():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				if !(!Options.DEVELOPMENT_MODE && file_name.begins_with('_') || !Options.DEVELOPMENT_MODE && file_name.begins_with('%')): 
+				if !(!Options.DEVELOPMENT_MODE && file_name.begins_with('_') || !Options.DEVELOPMENT_MODE && file_name.begins_with('%')):
 					ship_text += "[cell=1][left][url=" + file_name + "]" + file_name + "[/url][/left][/cell]"
 					if !file_name.begins_with('_') && FileAccess.file_exists("user://saves/ships/" + file_name + "/details.dat"):
 						var details = FileAccess.open("user://saves/ships/" + file_name + "/details.dat", FileAccess.READ)
 						var price = details.get_16()
-						ship_text += "[cell=1]      ->      [/cell][cell=1][right]" 
+						ship_text += "[cell=1]      ->      [/cell][cell=1][right]"
 						if price > ship_editor.current_ship_price + inventory.currency: ship_text += "[color=red]"
-						ship_text += str(price) 
+						ship_text += str(price)
 						if price > ship_editor.current_ship_price + inventory.currency: ship_text += "[/color]"
 						ship_text += " [img]res://UI/currency.png[/img]" + "[/right][/cell]"
 						details.close()
@@ -122,9 +121,9 @@ func _update_ship_list():
 					if !file_name.begins_with('_') && FileAccess.file_exists("user://saves/ships/" + file_name + "/details.dat"):
 						var details = FileAccess.open("user://saves/ships/" + file_name + "/details.dat", FileAccess.READ)
 						var price = details.get_16()
-						ship_text += "[cell=1]      ->      [/cell][cell=1][right]" 
+						ship_text += "[cell=1]      ->      [/cell][cell=1][right]"
 						if price > ship_editor.current_ship_price + inventory.currency: ship_text += "[color=red]"
-						ship_text += str(price) 
+						ship_text += str(price)
 						if price > ship_editor.current_ship_price + inventory.currency: ship_text += "[/color]"
 						ship_text += " [img]res://UI/currency.png[/img]" + "[/right][/cell]"
 						details.close()
@@ -142,13 +141,13 @@ func _on_load_pressed() -> void:
 	if !ship_name_label.text.begins_with('_') && FileAccess.file_exists("user://saves/ships/" + ship_name_label.text + "/details.dat"):
 		var details = FileAccess.open("user://saves/ships/" + ship_name_label.text + "/details.dat", FileAccess.READ)
 		var price = details.get_16()
-		if price > ship_editor.current_ship_price + inventory.currency && !Options.DEVELOPMENT_MODE: 
-			console.print_out("[color=red]Na tuto loď nemáš dostatek prostředků![/color]")
+		if price > ship_editor.current_ship_price + inventory.currency && !Options.DEVELOPMENT_MODE:
+			console.print_out("[color=red]Insufficient funds![/color]")
 			return
 	if (ship_name_label.text == ""): success = ship_editor.load_ship()
 	else: success = ship_editor.load_ship(ship_name_label.text)
-	if !success: console.print_out("[color=red]Loď s názvem '" + ship_name_label.text + "' nebyla nalezena![/color]")
-	else: 
+	if !success: console.print_out("[color=red]Ship with name '" + ship_name_label.text + "' was not found![/color]")
+	else:
 		_on_exit_pressed()
 		center_camera()
 
@@ -164,13 +163,13 @@ func _on_exit_pressed() -> void:
 	$HUD/Savemenu.visible = true
 	camera.locked = false
 
-func _on_ship_list_meta_clicked(meta:Variant) -> void:
+func _on_ship_list_meta_clicked(meta: Variant) -> void:
 	ship_name_label.text = meta
 
 func _on_autofloor_pressed():
 	ShipValidator.autofill_floor(ShipEditor.instance.wall_tile_map)
 
-func _on_autofloor_button_toggled(toggled_on:bool):
+func _on_autofloor_button_toggled(toggled_on: bool):
 	ShipEditor.autoflooring = toggled_on
 	if toggled_on: ShipValidator.autofill_floor(ShipEditor.instance.wall_tile_map)
 
@@ -178,12 +177,11 @@ func _on_deploy_pressed() -> void:
 	ShipValidator.autofill_floor(ShipEditor.instance.wall_tile_map)
 	
 	
-	if !ShipValidator.check_validity(ship_editor.wall_tile_map): 
-		ship_editor.console.print_out("[color=red]Loď nesplňuje podmínky pro uložení![/color]\nZkontrolujte, zda máte v lodi jádro.\nTaké zkontrolujte zda jsou všechny bloky spojeny.")
-		return 
+	if !ShipValidator.check_validity(ship_editor.wall_tile_map):
+		ship_editor.console.print_out("[color=red]Ship does not meet the requirements for saving![/color]\nPlease check that you have a core in your ship.\nAlso check that all blocks are connected.")
+		return
 
 	ship_editor.save_ship("%player_ship_new")
-	
 	
 	
 	# var path = "user://saves/ships"
@@ -230,4 +228,3 @@ func _on_deploy_pressed() -> void:
 # 	var content1 = FileAccess.get_file_as_bytes(path1)
 # 	var content2 = FileAccess.get_file_as_bytes(path2)
 # 	return content1 == content2
-

@@ -11,8 +11,8 @@ item_type = "Compass"
 [resource]
 script = ExtResource("1_8cs0n")
 id = 7
-title = "Navigační zařízení"
-description = "Přines navigační zařízení."
+title = "Navigation Device"
+description = "Bring the navigation device."
 reward = 1100
 goal = SubResource("Resource_rqi3f")
 world_limit = -1

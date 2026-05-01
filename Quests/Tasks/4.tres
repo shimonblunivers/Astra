@@ -11,8 +11,8 @@ item_type = ""
 [resource]
 script = ExtResource("1_at2id")
 id = 4
-title = "Kódovaný disk [1]"
-description = "Promluv si s bratrem."
+title = "Encoded Disk [1]"
+description = "Talk to the brother."
 reward = 0
 goal = SubResource("Resource_fynjr")
 world_limit = 1

@@ -7,7 +7,7 @@ var difference = Vector2.ZERO
 @onready var timer := $Timer
 
 
-var ship : Ship
+var ship: Ship
 
 var roles = []
 
@@ -84,26 +84,26 @@ var interactable = false
 
 var hovering = false
 
-var active_quest_id : int = -1 :
-	set (value):
+var active_quest_id: int = -1:
+	set(value):
 		if value == -1:
 			reload_missions()
 		else:
-			for npc in NPC.npcs: 
-				if npc.selected_quest_id == value && npc != self: 
+			for npc in NPC.npcs:
+				if npc.selected_quest_id == value && npc != self:
 					npc.reload_missions()
 		active_quest_id = value
 		update_nametag_color()
 
-var selected_quest_id = -1 : # IS TALKING ABOUT QUEST?
-	set (value):
-		if (active_quest_id != -1 || QuestManager.is_objective(self)): 
+var selected_quest_id = -1: # IS TALKING ABOUT QUEST?
+	set(value):
+		if (active_quest_id != -1 || QuestManager.is_objective(self )):
 			selected_quest_id = -1
 		else:
-			selected_quest_id = value 
+			selected_quest_id = value
 		update_nametag_color()
  
-var id : int
+var id: int
 
 # TODO: ✅ Add dialog
 
@@ -124,7 +124,7 @@ static func get_npc(_id: int) -> NPC:
 var skin = null
 var hair = null
 
-func init(_id : int = -1, _nickname : String = names.pick_random(), _roles := [Roles.CIVILIAN], _skin = null, _hair = null):
+func init(_id: int = -1, _nickname: String = names.pick_random(), _roles := [Roles.CIVILIAN], _skin = null, _hair = null):
 	roles = _roles
 	skin = _skin
 	hair = _hair
@@ -134,8 +134,8 @@ func init(_id : int = -1, _nickname : String = names.pick_random(), _roles := [R
 	else:
 		id = NPC.get_uid()
 		
-	if id == 0 && _skin == null: 
-		_nickname = "Kapitán " + _nickname
+	if id == 0 && _skin == null:
+		_nickname = "Captain " + _nickname
 		roles.append(Roles.CAPTAIN)
 	nickname = _nickname
 	
@@ -144,11 +144,11 @@ func init(_id : int = -1, _nickname : String = names.pick_random(), _roles := [R
 	$Nametag.text = nickname
 	name = "NPC_" + nickname + "_" + str(id)
 
-	npcs.append(self)
+	npcs.append(self )
 	
 
 func update_nametag_color():
-	if QuestManager.is_objective(self):
+	if QuestManager.is_objective(self ):
 		$Nametag.add_theme_color_override("font_outline_color", Quest.objective_of_quest_outline_color)
 		return
 	if active_quest_id > -1:
@@ -198,11 +198,11 @@ func _ready() -> void:
 func _in_physics(_delta):
 	$Area.position = Vector2(0, -42.5) + (-ship.difference_in_position).rotated(-global_rotation)
  
-func _on_interaction_area_area_entered(area:Area2D) -> void:
+func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerInteractArea"):
 		interactable = true
 
-func _on_interaction_area_area_exited(area:Area2D):
+func _on_interaction_area_area_exited(area: Area2D):
 	if area.is_in_group("PlayerInteractArea"):
 		interactable = false
 		dialog_manager.end_dialog()
@@ -215,7 +215,7 @@ func _on_area_mouse_exited() -> void:
 func _process(_delta):
 	$Nametag.visible = hovering && interactable
 
-func _on_area_input_event(_viewport:Node, event:InputEvent, _shape_idx:int) -> void:
+func _on_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_mask == 1:
 		if interactable:
 			if dialog_manager.is_dialog_active:
@@ -223,13 +223,13 @@ func _on_area_input_event(_viewport:Node, event:InputEvent, _shape_idx:int) -> v
 			else:
 				var dialog_position = Vector2(0, -105)
 
-				if QuestManager.is_objective(self):
-					if QuestManager.get_quest_by_target(self).task.id in Dialogs.conversations["mission_finished"].keys():
-						dialog_manager.start_dialog(dialog_position, Dialogs.conversations["mission_finished"][QuestManager.get_quest_by_target(self).task.id])
+				if QuestManager.is_objective(self ):
+					if QuestManager.get_quest_by_target(self ).task.id in Dialogs.conversations["mission_finished"].keys():
+						dialog_manager.start_dialog(dialog_position, Dialogs.conversations["mission_finished"][QuestManager.get_quest_by_target(self ).task.id])
 					else:
 						dialog_manager.start_dialog(dialog_position, Dialogs.conversations["mission_finished"][-1])
 
-					QuestManager.finished_quest_objective(QuestManager.get_quest_by_target(self))
+					QuestManager.finished_quest_objective(QuestManager.get_quest_by_target(self ))
 
 				elif selected_quest_id >= 0:
 					if selected_quest_id in QuestManager.active_task_ids:
@@ -240,7 +240,7 @@ func _on_area_input_event(_viewport:Node, event:InputEvent, _shape_idx:int) -> v
 					dialog_manager.start_dialog(dialog_position, [Dialogs.conversations["greeting"].pick_random()])
 				
 func delete():
-	npcs.erase(self)
+	npcs.erase(self )
 	queue_free()
 
 func _on_timer_timeout() -> void:

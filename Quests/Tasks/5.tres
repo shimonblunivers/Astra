@@ -11,8 +11,8 @@ item_type = "Vape"
 [resource]
 script = ExtResource("1_lardv")
 id = 5
-title = "Potřeby"
-description = "Přines elektronickou cigaretu."
+title = "Needs"
+description = "Bring an electronic cigarette."
 reward = 500
 goal = SubResource("Resource_cmsjo")
 world_limit = -1

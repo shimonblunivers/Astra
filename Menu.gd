@@ -13,9 +13,8 @@ func _ready():
 	$AudioStreamPlayer.playing = !ObjectList.started_game
 	#$Camera2D.make_current()
 	if ObjectList.started_game:
-		
 		#global_position = Vector2(Player.main_player.camera.global_position.x - get_viewport_rect().size.x / 2, Player.main_player.camera.global_position.y - get_viewport_rect().size.y / 2)
-		playbutton.text = "Zpět do hry"
+		playbutton.text = "Resume"
 		$FurtherBackground.visible = false
 		$CloserBackground.visible = false
 
@@ -70,4 +69,3 @@ func _on_credits_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-

@@ -11,8 +11,8 @@ item_type = "Chip"
 [resource]
 script = ExtResource("2_ewkbp")
 id = 1
-title = "Rodinné fotky"
-description = "Přines mi  čip s rodinnými fotkami."
+title = "Family Photos"
+description = "Bring me a chip with family photos."
 reward = 800
 goal = SubResource("Resource_7346g")
 world_limit = -1

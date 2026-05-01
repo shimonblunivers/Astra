@@ -1,73 +1,73 @@
-[gd_scene load_steps=9 format=3 uid="uid://pbc17eeutgje"]
+[gd_scene format=3 uid="uid://pbc17eeutgje"]
 
-[ext_resource type="Script" path="res://Editor/Editor.gd" id="1_a75tt"]
-[ext_resource type="Script" path="res://Editor/Console.gd" id="1_xklyf"]
-[ext_resource type="Script" path="res://Editor/ShipEditor.gd" id="3_glsei"]
+[ext_resource type="Script" uid="uid://cn0aa6g8fr135" path="res://Editor/Editor.gd" id="1_a75tt"]
+[ext_resource type="Script" uid="uid://ca4fl65ew3efi" path="res://Editor/Console.gd" id="1_xklyf"]
+[ext_resource type="Script" uid="uid://ckwnxl8qqdaij" path="res://Editor/ShipEditor.gd" id="3_glsei"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="4_0r2ym"]
 [ext_resource type="PackedScene" uid="uid://bcorpu3oqfn3n" path="res://Editor/Inventory/Inventory.tscn" id="4_g3mus"]
 [ext_resource type="TileSet" uid="uid://bfuqtumyjeq0m" path="res://Ship/WallTileMap.tres" id="4_kyc86"]
 [ext_resource type="TileSet" uid="uid://c5j4fanlmf5kc" path="res://Ship/ObjectTileMap.tres" id="5_lwkoj"]
-[ext_resource type="Script" path="res://Editor/EditorCamera.gd" id="8_jbctg"]
+[ext_resource type="Script" uid="uid://b6e1wrft6hmha" path="res://Editor/EditorCamera.gd" id="8_jbctg"]
 
-[node name="Editor" type="Node2D"]
+[node name="Editor" type="Node2D" unique_id=1846203601]
 process_mode = 3
 z_index = 20
 script = ExtResource("1_a75tt")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1647499830]
 
-[node name="BackgroundMenu" type="ColorRect" parent="HUD"]
+[node name="BackgroundMenu" type="ColorRect" parent="HUD" unique_id=1776444624]
 offset_left = 1102.0
 offset_top = -2.0
 offset_right = 1282.0
 offset_bottom = 183.0
 color = Color(0, 0, 0, 0.160784)
 
-[node name="Savemenu" type="Button" parent="HUD"]
+[node name="Savemenu" type="Button" parent="HUD" unique_id=1779705064]
 offset_left = 1113.0
 offset_top = 15.0
 offset_right = 1268.0
 offset_bottom = 47.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_0r2ym")
-text = "Uložit / Načíst"
+text = "Save / Load"
 metadata/_edit_use_anchors_ = true
 
-[node name="Autofloor" type="Button" parent="HUD"]
+[node name="Autofloor" type="Button" parent="HUD" unique_id=347960502]
 offset_left = 1113.0
 offset_top = 52.0
 offset_right = 1268.0
 offset_bottom = 84.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_0r2ym")
-text = "Vyplnit podlahu"
+text = "Fill the floor"
 metadata/_edit_use_anchors_ = true
 
-[node name="Deploy" type="Button" parent="HUD"]
+[node name="Deploy" type="Button" parent="HUD" unique_id=461232584]
 offset_left = 1113.0
 offset_top = 137.52
 offset_right = 1268.0
 offset_bottom = 169.52
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_0r2ym")
-text = "Postavit loď"
+text = "Assemble ship"
 metadata/_edit_use_anchors_ = true
 
-[node name="ToolPreview" type="Sprite2D" parent="HUD"]
+[node name="ToolPreview" type="Sprite2D" parent="HUD" unique_id=1705854283]
 position = Vector2(1180, 620)
 scale = Vector2(3, 3)
 
-[node name="Inventory" parent="HUD" instance=ExtResource("4_g3mus")]
+[node name="Inventory" parent="HUD" unique_id=1149140614 instance=ExtResource("4_g3mus")]
 position = Vector2(-165, 0)
 
-[node name="AutofloorButton" type="CheckButton" parent="HUD"]
+[node name="AutofloorButton" type="CheckButton" parent="HUD" unique_id=1678020663]
 offset_left = 1225.0
 offset_top = 93.0
 offset_right = 1269.0
 offset_bottom = 117.0
 focus_mode = 0
 
-[node name="AutofloorLabel" type="Label" parent="HUD"]
+[node name="AutofloorLabel" type="Label" parent="HUD" unique_id=1857314785]
 offset_left = 1115.0
 offset_top = 92.0
 offset_right = 1223.0
@@ -75,18 +75,18 @@ offset_bottom = 116.0
 theme_override_fonts/font = ExtResource("4_0r2ym")
 text = "Autoflooring"
 
-[node name="DirectionLabel" type="Label" parent="HUD"]
+[node name="DirectionLabel" type="Label" parent="HUD" unique_id=2012338187]
 offset_left = 1115.0
 offset_top = 680.0
 offset_right = 1223.0
 offset_bottom = 704.0
 theme_override_fonts/font = ExtResource("4_0r2ym")
-text = "Směr: doprava"
+text = "Direction: right"
 
-[node name="SavemenuUI" type="CanvasLayer" parent="HUD"]
+[node name="SavemenuUI" type="CanvasLayer" parent="HUD" unique_id=1100917526]
 visible = false
 
-[node name="Background" type="ColorRect" parent="HUD/SavemenuUI"]
+[node name="Background" type="ColorRect" parent="HUD/SavemenuUI" unique_id=856565789]
 modulate = Color(0.0980392, 0.0980392, 0.0980392, 0.545098)
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,17 +94,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Exit" type="Button" parent="HUD/SavemenuUI"]
+[node name="Exit" type="Button" parent="HUD/SavemenuUI" unique_id=655906367]
 offset_left = 1113.0
 offset_top = 15.0
 offset_right = 1268.0
 offset_bottom = 47.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_0r2ym")
-text = "Zpět"
+text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[node name="ShipName" type="LineEdit" parent="HUD/SavemenuUI"]
+[node name="ShipName" type="LineEdit" parent="HUD/SavemenuUI" unique_id=164188863]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -118,7 +118,7 @@ placeholder_text = "Ship name"
 alignment = 1
 context_menu_enabled = false
 
-[node name="Save" type="Button" parent="HUD/SavemenuUI"]
+[node name="Save" type="Button" parent="HUD/SavemenuUI" unique_id=307104229]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -134,7 +134,7 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("4_0r2ym")
 text = "Save"
 
-[node name="Load" type="Button" parent="HUD/SavemenuUI"]
+[node name="Load" type="Button" parent="HUD/SavemenuUI" unique_id=656764820]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -151,7 +151,7 @@ theme_override_fonts/font = ExtResource("4_0r2ym")
 text = "Load
 "
 
-[node name="Control" type="Control" parent="HUD/SavemenuUI"]
+[node name="Control" type="Control" parent="HUD/SavemenuUI" unique_id=1240379440]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -165,7 +165,7 @@ offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="HUD/SavemenuUI/Control"]
+[node name="Background" type="ColorRect" parent="HUD/SavemenuUI/Control" unique_id=2051950912]
 modulate = Color(0.0980392, 0.0980392, 0.0980392, 0.545098)
 layout_mode = 1
 anchors_preset = -1
@@ -178,7 +178,7 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ShipList" type="RichTextLabel" parent="HUD/SavemenuUI/Control"]
+[node name="ShipList" type="RichTextLabel" parent="HUD/SavemenuUI/Control" unique_id=1466939206]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,7 +192,7 @@ theme_override_fonts/normal_font = ExtResource("4_0r2ym")
 bbcode_enabled = true
 meta_underlined = false
 
-[node name="ShipListLabel" type="Label" parent="HUD/SavemenuUI"]
+[node name="ShipListLabel" type="Label" parent="HUD/SavemenuUI" unique_id=47494630]
 offset_left = 566.0
 offset_top = 280.0
 offset_right = 714.0
@@ -201,10 +201,10 @@ theme_override_fonts/font = ExtResource("4_0r2ym")
 text = "Ship list:"
 horizontal_alignment = 1
 
-[node name="Console" type="CanvasLayer" parent="HUD"]
+[node name="Console" type="CanvasLayer" parent="HUD" unique_id=682615134]
 layer = 2
 
-[node name="ConsoleLog" type="RichTextLabel" parent="HUD/Console"]
+[node name="ConsoleLog" type="RichTextLabel" parent="HUD/Console" unique_id=1322526284]
 anchors_preset = -1
 anchor_left = 1.0003
 anchor_top = 0.0791667
@@ -222,32 +222,32 @@ scroll_following = true
 script = ExtResource("1_xklyf")
 metadata/_edit_use_anchors_ = true
 
-[node name="ConsoleTimer" type="Timer" parent="HUD/Console/ConsoleLog"]
+[node name="ConsoleTimer" type="Timer" parent="HUD/Console/ConsoleLog" unique_id=1478366623]
 
-[node name="Ship" type="Node2D" parent="."]
+[node name="Ship" type="Node2D" parent="." unique_id=203400736]
 position = Vector2(0, 320)
 script = ExtResource("3_glsei")
 
-[node name="WallTileMap" type="TileMapLayer" parent="Ship"]
+[node name="WallTileMap" type="TileMapLayer" parent="Ship" unique_id=463769665]
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 0, 2, 0)
 tile_set = ExtResource("4_kyc86")
 
-[node name="ObjectTileMap" type="TileMapLayer" parent="Ship"]
+[node name="ObjectTileMap" type="TileMapLayer" parent="Ship" unique_id=876503330]
 z_index = 10
 tile_set = ExtResource("5_lwkoj")
 
-[node name="LimitRect" type="ColorRect" parent="."]
+[node name="LimitRect" type="ColorRect" parent="." unique_id=961449738]
 offset_left = -6392.0
 offset_top = -3600.0
 offset_right = 8.0
 offset_bottom = 3600.0
 color = Color(0.964706, 0.243137, 0.164706, 0.639216)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1433420373]
 editor_draw_limits = true
 script = ExtResource("8_jbctg")
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1132199322]
 z_index = -1
 anchors_preset = 8
 anchor_left = 0.5

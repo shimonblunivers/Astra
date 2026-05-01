@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcorpu3oqfn3n"]
+[gd_scene format=3 uid="uid://bcorpu3oqfn3n"]
 
-[ext_resource type="Script" path="res://Editor/Inventory/Inventory.gd" id="1_rp5fp"]
+[ext_resource type="Script" uid="uid://bu716b2sdwqw3" path="res://Editor/Inventory/Inventory.gd" id="1_rp5fp"]
 [ext_resource type="FontFile" uid="uid://dbekrgkvpg3lc" path="res://Fonts/SpaceMono-Bold.ttf" id="2_p4vjq"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="3_ojvx4"]
 [ext_resource type="Texture2D" uid="uid://bb7iejyou2vsu" path="res://UI/currency.png" id="4_ndkgv"]
@@ -16,10 +16,10 @@ anti_aliasing = false
 [sub_resource type="Theme" id="Theme_hqxyx"]
 Panel/styles/panel = SubResource("StyleBoxFlat_s6yrk")
 
-[node name="Inventory" type="Node2D"]
+[node name="Inventory" type="Node2D" unique_id=1555508375]
 script = ExtResource("1_rp5fp")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1600759823]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -29,18 +29,18 @@ offset_bottom = 720.0
 grow_horizontal = 2
 theme = SubResource("Theme_hqxyx")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=783582373]
 anchors_preset = 10
 anchor_right = 1.0
 offset_right = -0.399994
 offset_bottom = 42.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_p4vjq")
-text = "Inventář"
+text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=449103539]
 offset_left = -140.0
 offset_top = 63.0
 offset_right = 140.0
@@ -50,11 +50,11 @@ theme_override_constants/h_separation = 75
 theme_override_constants/v_separation = 100
 columns = 4
 
-[node name="Currency" type="Node2D" parent="."]
+[node name="Currency" type="Node2D" parent="." unique_id=1958555850]
 position = Vector2(-147, 689)
 scale = Vector2(2, 2)
 
-[node name="Value" type="Label" parent="Currency"]
+[node name="Value" type="Label" parent="Currency" unique_id=885025016]
 offset_left = 18.0
 offset_top = -9.5
 offset_right = 70.0
@@ -68,13 +68,13 @@ text = "0"
 vertical_alignment = 1
 text_direction = 1
 
-[node name="Icon" type="Sprite2D" parent="Currency"]
+[node name="Icon" type="Sprite2D" parent="Currency" unique_id=298053169]
 position = Vector2(-3.2, -5.2)
 scale = Vector2(1.025, 1.025)
 texture = ExtResource("4_ndkgv")
 centered = false
 
-[node name="AddCurrencyLabel" type="Label" parent="Currency"]
+[node name="AddCurrencyLabel" type="Label" parent="Currency" unique_id=182495166]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -89,11 +89,10 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0.776471, 0.34902, 1)
 theme_override_fonts/font = ExtResource("3_ojvx4")
 theme_override_font_sizes/font_size = 14
-text = "aasdfasd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RemoveCurrencyLabel" type="Label" parent="Currency"]
+[node name="RemoveCurrencyLabel" type="Label" parent="Currency" unique_id=1743427824]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -108,8 +107,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.0941176, 0.172549, 1)
 theme_override_fonts/font = ExtResource("3_ojvx4")
 theme_override_font_sizes/font_size = 14
-text = "aasdfasd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="Currency"]
+[node name="Timer" type="Timer" parent="Currency" unique_id=1735795240]

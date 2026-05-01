@@ -1,13 +1,13 @@
 class_name Door extends InteractableShipPart
 
 
-@onready var walkway : StaticBody2D = $Hitbox/StaticBody2DWalkway
-@onready var open_sound : AudioStreamPlayer2D = $Sound/DoorOpen
-@onready var close_sound : AudioStreamPlayer2D = $Sound/DoorClose
-@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var walkway: StaticBody2D = $Hitbox/StaticBody2DWalkway
+@onready var open_sound: AudioStreamPlayer2D = $Sound/DoorOpen
+@onready var close_sound: AudioStreamPlayer2D = $Sound/DoorClose
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var mouse_hitbox : Node2D = $Hitbox/Area/MouseHitbox
-@onready var door_area : Node2D = $Hitbox/Area/Area2D
+@onready var mouse_hitbox: Node2D = $Hitbox/Area/MouseHitbox
+@onready var door_area: Node2D = $Hitbox/Area/Area2D
 
 var state := "closed"
 
@@ -21,9 +21,9 @@ var interact_range = 300
 
 var is_operating = false
 
-func init(_ship, _coords : Vector2i, _durability : float = 100, _mass : float = 3):
-	_ship.interactables.append(self)
-	super(_ship, _coords, _durability, _mass)
+func init(_ship, _coords: Vector2i, _durability: float = 100, _mass: float = 3):
+	_ship.interactables.append(self )
+	super (_ship, _coords, _durability, _mass)
 
 func _ready() -> void:
 	if direction == "vertical":
@@ -59,9 +59,8 @@ func close():
 	ship.opened_doors.erase(tilemap_coords)
 
 func _on_frame_changed():
-
 	match animated_sprite.frame:
-		3: #  OTEVŘENO
+		3: # OPEN
 			is_operating = state != "open"
 			
 			$"Hitbox/AnimatedOccluders/0left".occluder_light_mask = 0
@@ -97,7 +96,7 @@ func _on_frame_changed():
 				$"Hitbox/AnimatedHitbox/0right".set_collision_layer_value(collision_layer, true)
 				$"Hitbox/AnimatedHitbox/1left".set_collision_layer_value(collision_layer, true)
 				$"Hitbox/AnimatedHitbox/1right".set_collision_layer_value(collision_layer, true)
-		0: # ZAVŘENO
+		0: # CLOSED
 			$"Hitbox/AnimatedOccluders/0left".occluder_light_mask = occluder_light_mask
 			$"Hitbox/AnimatedOccluders/0right".occluder_light_mask = occluder_light_mask
 			$"Hitbox/AnimatedOccluders/1left".occluder_light_mask = occluder_light_mask
@@ -127,19 +126,19 @@ func _interact():
 
 var obstructers = []
 
-func _on_area_2d_area_entered(area:Area2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if (area.is_in_group("CharacterInteractArea")):
 		obstructed = true
 		obstructers.append(area)
 
 
-func _on_area_2d_area_exited(area:Area2D) -> void:
+func _on_area_2d_area_exited(area: Area2D) -> void:
 	if (area.is_in_group("CharacterInteractArea")):
 		obstructers.erase(area)
 		if obstructers.is_empty(): obstructed = false
 
 
-func _on_mouse_hitbox_input_event(_viewport:Node, event:InputEvent, _shape_idx:int):
+func _on_mouse_hitbox_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton && event.button_mask == 1 && Player.main_player.alive:
 		interact()
 
@@ -150,4 +149,3 @@ func _on_autoclose_timer_timeout() -> void:
 			close()
 		else:
 			$AutocloseTimer.start()
-

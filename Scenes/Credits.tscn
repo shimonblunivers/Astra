@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://l3q2qeuplldf"]
+[gd_scene format=3 uid="uid://l3q2qeuplldf"]
 
-[ext_resource type="Script" path="res://Backgrounds/Credits.gd" id="1_esd3n"]
-[ext_resource type="Shader" path="res://UI/BackgroundMenuScroll.gdshader" id="1_n7784"]
+[ext_resource type="Script" uid="uid://d34qlqo2alssj" path="res://Backgrounds/Credits.gd" id="1_esd3n"]
+[ext_resource type="Shader" uid="uid://cb6vhyfr81kji" path="res://UI/BackgroundMenuScroll.gdshader" id="1_n7784"]
 [ext_resource type="Texture2D" uid="uid://dkwpkswggbn7r" path="res://Backgrounds/further_bodies.png" id="2_gagu1"]
 [ext_resource type="Texture2D" uid="uid://dhvixcsrhu5oc" path="res://Backgrounds/closer_bodies.png" id="3_s7oer"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="4_7bk5k"]
@@ -16,12 +16,12 @@ shader_parameter/speed_divider = 10.7
 shader = ExtResource("1_n7784")
 shader_parameter/speed_divider = 10.0
 
-[node name="Credits" type="CanvasLayer"]
+[node name="Credits" type="CanvasLayer" unique_id=1165965237]
 process_mode = 3
 layer = 4
 script = ExtResource("1_esd3n")
 
-[node name="FurtherBackground" type="TextureRect" parent="."]
+[node name="FurtherBackground" type="TextureRect" parent="." unique_id=1566925112]
 light_mask = 0
 material = SubResource("ShaderMaterial_ieuf6")
 anchors_preset = 8
@@ -38,7 +38,7 @@ grow_vertical = 2
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_gagu1")
 
-[node name="CloserBackground" type="TextureRect" parent="."]
+[node name="CloserBackground" type="TextureRect" parent="." unique_id=1974408439]
 light_mask = 0
 material = SubResource("ShaderMaterial_ygll2")
 anchors_preset = 8
@@ -55,96 +55,81 @@ grow_vertical = 2
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_s7oer")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=975138573]
 light_mask = 0
 offset_left = -700.0
 offset_right = 580.0
 offset_bottom = 720.0
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=319445485]
 light_mask = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_7bk5k")
 theme_override_font_sizes/font_size = 24
-text = "Programování a grafika"
+text = "Programmin & Graphics"
 horizontal_alignment = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=292089331]
 light_mask = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_7bk5k")
 theme_override_font_sizes/font_size = 24
-text = "Zvuk a testování"
+text = "Sound & Playtesting"
 horizontal_alignment = 2
 
-[node name="Label5" type="Label" parent="VBoxContainer"]
+[node name="Label5" type="Label" parent="VBoxContainer" unique_id=1912435163]
 light_mask = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_7bk5k")
 theme_override_font_sizes/font_size = 24
-text = "Testování"
+text = "Playtesting"
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="VBoxContainer"]
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=1023903534]
 light_mask = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_7bk5k")
 theme_override_font_sizes/font_size = 24
-text = "Testování"
+text = "Playtesting"
 horizontal_alignment = 2
 
-[node name="Label4" type="Label" parent="VBoxContainer"]
-light_mask = 0
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_7bk5k")
-theme_override_font_sizes/font_size = 24
-text = "Testování a oprava chyb"
-horizontal_alignment = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1924679498]
 light_mask = 0
 offset_left = 700.0
 offset_right = 1980.0
 offset_bottom = 720.0
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer2" unique_id=968440576]
 light_mask = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_7bk5k")
 theme_override_font_sizes/font_size = 24
-text = "Šimon Zelinka"
+text = "Shimon Zelinka"
 
-[node name="Label2" type="Label" parent="VBoxContainer2"]
+[node name="Label2" type="Label" parent="VBoxContainer2" unique_id=1465863360]
 light_mask = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_7bk5k")
 theme_override_font_sizes/font_size = 24
 text = "Ondřej Němec"
 
-[node name="Label5" type="Label" parent="VBoxContainer2"]
+[node name="Label5" type="Label" parent="VBoxContainer2" unique_id=410181183]
 light_mask = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_7bk5k")
 theme_override_font_sizes/font_size = 24
 text = "Denisa Duongová"
 
-[node name="Label3" type="Label" parent="VBoxContainer2"]
+[node name="Label3" type="Label" parent="VBoxContainer2" unique_id=1464876647]
 light_mask = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_7bk5k")
 theme_override_font_sizes/font_size = 24
 text = "Ondřej Buchlovský"
 
-[node name="Label4" type="Label" parent="VBoxContainer2"]
-light_mask = 0
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_7bk5k")
-theme_override_font_sizes/font_size = 24
-text = "Scriptless Week"
-
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=22126889]
 light_mask = 0
 offset_top = 104.0
 offset_right = 1280.0
@@ -156,18 +141,18 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=109403795]
 light_mask = 0
 offset_right = 1280.0
 offset_bottom = 1280.0
 
-[node name="Back" type="Button" parent="MarginContainer"]
+[node name="Back" type="Button" parent="MarginContainer" unique_id=1138013681]
 light_mask = 0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("5_7qnag")
 theme_override_fonts/font = ExtResource("6_neagu")
-text = "Zpět"
+text = "Back"
 
 [connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]

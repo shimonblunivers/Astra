@@ -10,7 +10,7 @@ region = Rect2(96, 64, 32, 32)
 [resource]
 script = ExtResource("1_1bnsl")
 name = "thruster"
-nickname = "Tryska"
+nickname = "Thruster"
 texture = SubResource("AtlasTexture_xq6vc")
 price = 800
 rotatable = true

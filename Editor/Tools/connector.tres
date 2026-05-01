@@ -10,7 +10,7 @@ region = Rect2(128, 32, 32, 32)
 [resource]
 script = ExtResource("1_bypm0")
 name = "connector"
-nickname = "Spojovník"
+nickname = "Connector"
 texture = SubResource("AtlasTexture_iwwv6")
 price = 0
 rotatable = true

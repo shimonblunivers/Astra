@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://bl1hdflkphqup"]
+[gd_scene format=3 uid="uid://bl1hdflkphqup"]
 
-[ext_resource type="Script" path="res://Ship/Walls/Thruster/Thruster.gd" id="1_tutll"]
+[ext_resource type="Script" uid="uid://crgeh0ns7tjf" path="res://Ship/Walls/Thruster/Thruster.cs" id="1_ylqdl"]
 [ext_resource type="Texture2D" uid="uid://dobw14md45sbd" path="res://Ship/wall_tilesheet.png" id="2_0a064"]
 [ext_resource type="Texture2D" uid="uid://d1dv1b375xke5" path="res://Ship/Walls/Thruster/jet_particle_texture.png" id="3_krnpy"]
 [ext_resource type="Texture2D" uid="uid://dhtphl8nnev0i" path="res://Ship/Walls/Thruster/sidejet_particle_texture.png" id="4_a8wcp"]
@@ -22,7 +22,7 @@ colors = PackedColorArray(0.588235, 0.231373, 0.172549, 1, 0.524401, 0.288252, 0
 gradient = SubResource("Gradient_5pfsn")
 
 [sub_resource type="Curve" id="Curve_hmsjk"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.62037, 0.470661), 0.0, 0.0, 0, 0, Vector2(0.987654, 5), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -83,72 +83,70 @@ color_ramp = SubResource("GradientTexture1D_t71rq")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_glnne"]
 polygon = PackedVector2Array(-16, -8, -16, 8, -16, 16, -15.8, 16, -15.8, 8, 8, 8, 8, -8, -15.8, -8, -15.8, -16, -16, -16)
 
-[node name="Thruster" type="Node2D"]
-script = ExtResource("1_tutll")
+[node name="Thruster" type="Node2D" unique_id=1567678184]
+script = ExtResource("1_ylqdl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=676682334]
 use_parent_material = true
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_hy2pl")
 
-[node name="Hitbox" type="AnimatableBody2D" parent="."]
+[node name="Hitbox" type="AnimatableBody2D" parent="." unique_id=410065576]
 sync_to_physics = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2135017208]
 shape = SubResource("RectangleShape2D_yeoku")
 
-[node name="JetParticles" type="GPUParticles2D" parent="."]
+[node name="JetParticles" type="GPUParticles2D" parent="." unique_id=1482975368]
 z_index = 1
 position = Vector2(68, -1)
 amount = 2000
-process_material = SubResource("ParticleProcessMaterial_o734o")
 texture = ExtResource("3_krnpy")
 lifetime = 0.75
 speed_scale = 2.0
 local_coords = true
 trail_enabled = true
 trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_o734o")
 
-[node name="RightSideJetParticles" type="GPUParticles2D" parent="."]
+[node name="RightSideJetParticles" type="GPUParticles2D" parent="." unique_id=848403889]
 z_index = -1
 position = Vector2(35, -70)
 rotation = -0.872665
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_ivdb8")
 texture = ExtResource("4_a8wcp")
 lifetime = 0.5
 speed_scale = 2.0
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ivdb8")
 
-[node name="LeftSideJetParticles" type="GPUParticles2D" parent="."]
+[node name="LeftSideJetParticles" type="GPUParticles2D" parent="." unique_id=2045207723]
 z_index = -1
 position = Vector2(35, 70)
 rotation = 0.698132
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_ivdb8")
 texture = ExtResource("4_a8wcp")
 lifetime = 0.5
 speed_scale = 2.0
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ivdb8")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=817302245]
 scale = Vector2(5, 5)
 occluder = SubResource("OccluderPolygon2D_glnne")
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=1702050509]
 visible = false
 
-[node name="Jet" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="Jet" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1736929491]
 stream = ExtResource("4_xdkpc")
 volume_db = -5.0
 max_distance = 4000.0
 attenuation = 4.0
 bus = &"SFX"
-area_mask = 0
 
-[node name="SideJet" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="SideJet" type="AudioStreamPlayer2D" parent="Sounds" unique_id=2018124795]
 stream = ExtResource("6_cxg52")
 volume_db = -4.0
 attenuation = 4.0
 bus = &"SFX"
-area_mask = 0

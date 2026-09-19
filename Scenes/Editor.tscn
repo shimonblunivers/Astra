@@ -1,18 +1,27 @@
 [gd_scene format=3 uid="uid://pbc17eeutgje"]
 
-[ext_resource type="Script" uid="uid://cn0aa6g8fr135" path="res://Editor/Editor.gd" id="1_a75tt"]
-[ext_resource type="Script" uid="uid://ca4fl65ew3efi" path="res://Editor/Console.gd" id="1_xklyf"]
-[ext_resource type="Script" uid="uid://ckwnxl8qqdaij" path="res://Editor/ShipEditor.gd" id="3_glsei"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="4_0r2ym"]
+[ext_resource type="Script" uid="uid://c81ttfdh52w21" path="res://Editor/Console.cs" id="4_847jc"]
 [ext_resource type="PackedScene" uid="uid://bcorpu3oqfn3n" path="res://Editor/Inventory/Inventory.tscn" id="4_g3mus"]
 [ext_resource type="TileSet" uid="uid://bfuqtumyjeq0m" path="res://Ship/WallTileMap.tres" id="4_kyc86"]
+[ext_resource type="Script" uid="uid://cqnage44s5oii" path="res://Editor/Editor.cs" id="4_qexec"]
+[ext_resource type="Script" uid="uid://bnpvia66xa5cb" path="res://Editor/ShipEditor.cs" id="5_847jc"]
 [ext_resource type="TileSet" uid="uid://c5j4fanlmf5kc" path="res://Ship/ObjectTileMap.tres" id="5_lwkoj"]
-[ext_resource type="Script" uid="uid://b6e1wrft6hmha" path="res://Editor/EditorCamera.gd" id="8_jbctg"]
+[ext_resource type="Script" uid="uid://cy1q6jj00ntgr" path="res://Editor/EditorCamera.cs" id="8_ir51w"]
 
-[node name="Editor" type="Node2D" unique_id=1846203601]
+[node name="Editor" type="Node2D" unique_id=1846203601 node_paths=PackedStringArray("ConsoleLog", "ShipEditorNode", "SavemenuUI", "Camera", "ShipNameLabel", "ShipList", "InventoryNode", "DirectionLabel", "LimitRect")]
 process_mode = 3
 z_index = 20
-script = ExtResource("1_a75tt")
+script = ExtResource("4_qexec")
+ConsoleLog = NodePath("HUD/Console/ConsoleLog")
+ShipEditorNode = NodePath("Ship")
+SavemenuUI = NodePath("HUD/Savemenu")
+Camera = NodePath("Camera2D")
+ShipNameLabel = NodePath("HUD/SavemenuUI/ShipName")
+ShipList = NodePath("HUD/SavemenuUI/Control/ShipList")
+InventoryNode = NodePath("HUD/Inventory")
+DirectionLabel = NodePath("HUD/DirectionLabel")
+LimitRect = NodePath("LimitRect")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1647499830]
 
@@ -219,14 +228,14 @@ mouse_filter = 2
 bbcode_enabled = true
 scroll_active = false
 scroll_following = true
-script = ExtResource("1_xklyf")
+script = ExtResource("4_847jc")
 metadata/_edit_use_anchors_ = true
 
 [node name="ConsoleTimer" type="Timer" parent="HUD/Console/ConsoleLog" unique_id=1478366623]
 
 [node name="Ship" type="Node2D" parent="." unique_id=203400736]
 position = Vector2(0, 320)
-script = ExtResource("3_glsei")
+script = ExtResource("5_847jc")
 
 [node name="WallTileMap" type="TileMapLayer" parent="Ship" unique_id=463769665]
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 0, 2, 0)
@@ -245,7 +254,7 @@ color = Color(0.964706, 0.243137, 0.164706, 0.639216)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1433420373]
 editor_draw_limits = true
-script = ExtResource("8_jbctg")
+script = ExtResource("8_ir51w")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1132199322]
 z_index = -1

@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbtvg28idrapq"]
+[gd_scene format=3 uid="uid://dbtvg28idrapq"]
 
-[ext_resource type="Script" path="res://Ship/Walls/Wall/Wall.gd" id="1_d763y"]
 [ext_resource type="Texture2D" uid="uid://dobw14md45sbd" path="res://Ship/wall_tilesheet.png" id="1_p63wu"]
+[ext_resource type="Script" uid="uid://crqlo0kntmvqn" path="res://Ship/Walls/Wall/Wall.cs" id="1_yihui"]
 [ext_resource type="Texture2D" uid="uid://dql1xnhfuwip2" path="res://Ship/Destroyable/crack0.png" id="3_1faau"]
 [ext_resource type="Texture2D" uid="uid://cr3gytjseicgi" path="res://Ship/Destroyable/crack1.png" id="4_k37me"]
 [ext_resource type="Texture2D" uid="uid://coxtmt07numrx" path="res://Ship/Destroyable/crack2.png" id="5_11g0f"]
@@ -27,7 +27,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_11g0f")
 }],
-"loop": false,
+"loop": 0,
 "name": &"crack",
 "speed": 0.0
 }]
@@ -40,32 +40,32 @@ polygon = PackedVector2Array(-40, -40, -40, 40, 40, 40, 40, -40)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85uss"]
 
-[node name="Wall" type="Node2D"]
-script = ExtResource("1_d763y")
+[node name="Wall" type="Node2D" unique_id=976238164]
+script = ExtResource("1_yihui")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1073522521]
 material = SubResource("ShaderMaterial_65bpr")
 position = Vector2(1.90735e-06, 0)
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_t106e")
 
-[node name="Cracks" type="AnimatedSprite2D" parent="."]
+[node name="Cracks" type="AnimatedSprite2D" parent="." unique_id=554927499]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_w35h2")
 animation = &"crack"
 
-[node name="Hitbox" type="AnimatableBody2D" parent="." groups=["Wall"]]
+[node name="Hitbox" type="AnimatableBody2D" parent="." unique_id=1847606196 groups=["Wall"]]
 collision_layer = 32769
 collision_mask = 32769
 sync_to_physics = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1591345285]
 shape = SubResource("RectangleShape2D_w2q75")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=248843193]
 occluder = SubResource("OccluderPolygon2D_fhldi")
 
-[node name="HP" type="ProgressBar" parent="."]
+[node name="HP" type="ProgressBar" parent="." unique_id=64551253]
 visible = false
 offset_right = 160.0
 offset_bottom = 160.0
@@ -74,7 +74,7 @@ max_value = 4.0
 step = -1.0
 value = 4.0
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1525759665]
 offset_left = -80.0
 offset_top = -80.0
 offset_right = 80.0

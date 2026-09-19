@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcorpu3oqfn3n"]
 
-[ext_resource type="Script" uid="uid://bu716b2sdwqw3" path="res://Editor/Inventory/Inventory.gd" id="1_rp5fp"]
+[ext_resource type="Script" uid="uid://bd4jdrhlgu817" path="res://Editor/Inventory/Inventory.cs" id="1_gprg0"]
 [ext_resource type="FontFile" uid="uid://dbekrgkvpg3lc" path="res://Fonts/SpaceMono-Bold.ttf" id="2_p4vjq"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="3_ojvx4"]
 [ext_resource type="Texture2D" uid="uid://bb7iejyou2vsu" path="res://UI/currency.png" id="4_ndkgv"]
@@ -17,7 +17,7 @@ anti_aliasing = false
 Panel/styles/panel = SubResource("StyleBoxFlat_s6yrk")
 
 [node name="Inventory" type="Node2D" unique_id=1555508375]
-script = ExtResource("1_rp5fp")
+script = ExtResource("1_gprg0")
 
 [node name="Panel" type="Panel" parent="." unique_id=1600759823]
 anchors_preset = 5

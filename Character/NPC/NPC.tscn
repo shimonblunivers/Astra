@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://qo508d4kbv3i"]
+[gd_scene format=3 uid="uid://qo508d4kbv3i"]
 
-[ext_resource type="Script" path="res://Character/NPC/NPC.gd" id="2_d6b1x"]
+[ext_resource type="Script" uid="uid://dv1deeks6wk14" path="res://Character/NPC/NPC.cs" id="1_5gg3u"]
 [ext_resource type="PackedScene" uid="uid://bkv0eyk6hhdw5" path="res://Character/NPC/NPCSprite.tscn" id="2_hqmdl"]
+[ext_resource type="Script" uid="uid://cht8hmgkqlx4h" path="res://Conversation/DialogManager.cs" id="4_5gg3u"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="5_aggmp"]
 [ext_resource type="Texture2D" uid="uid://dd6ut7tl0o22u" path="res://Lighting/light.png" id="5_lae3u"]
-[ext_resource type="Script" path="res://Conversation/DialogManager.gd" id="6_bx6ve"]
 [ext_resource type="AudioStream" uid="uid://d0eaaosonhloe" path="res://Quests/quest_finished.mp3" id="6_fpgho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j6yp"]
@@ -16,7 +16,7 @@ radius = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wh18y"]
 radius = 150.0
 
-[node name="NPC" type="CharacterBody2D" groups=["Character", "NPC"]]
+[node name="NPC" type="CharacterBody2D" unique_id=292564654 node_paths=PackedStringArray("Legs") groups=["Character", "NPC"]]
 z_index = 10
 collision_layer = 258
 collision_mask = 259
@@ -24,39 +24,39 @@ motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 4278190080
 safe_margin = 0.5
-script = ExtResource("2_d6b1x")
+script = ExtResource("1_5gg3u")
+Legs = NodePath("LegHitbox")
 
-[node name="Area" type="Area2D" parent="." groups=["CharacterArea"]]
+[node name="Area" type="Area2D" parent="." unique_id=1077821011 groups=["CharacterArea"]]
 position = Vector2(0, -42.5)
 collision_layer = 16
 collision_mask = 16
 monitoring = false
 monitorable = false
 
-[node name="BodyHitbox" type="CollisionShape2D" parent="Area"]
+[node name="BodyHitbox" type="CollisionShape2D" parent="Area" unique_id=1332689294]
 shape = SubResource("RectangleShape2D_8j6yp")
 
-[node name="LegHitbox" type="CollisionShape2D" parent="."]
+[node name="LegHitbox" type="CollisionShape2D" parent="." unique_id=1248914087]
 shape = SubResource("CircleShape2D_hjl6e")
 
-[node name="InteractionArea" type="Area2D" parent="." groups=["CharacterInteractArea"]]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=32771160 groups=["CharacterInteractArea"]]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1187851688]
 shape = SubResource("CircleShape2D_wh18y")
 
-[node name="Sprite" parent="." instance=ExtResource("2_hqmdl")]
+[node name="Sprite" parent="." unique_id=1695530228 instance=ExtResource("2_hqmdl")]
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=424673205]
 
-[node name="Walk" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="Walk" type="AudioStreamPlayer2D" parent="Sounds" unique_id=306183059]
 volume_db = -1.0
 max_distance = 1000.0
 bus = &"SFX"
-area_mask = 0
 
-[node name="EditorLight" type="PointLight2D" parent="."]
+[node name="EditorLight" type="PointLight2D" parent="." unique_id=778061913]
 position = Vector2(51.5874, -52.9795)
 editor_only = true
 color = Color(0.988235, 1, 1, 1)
@@ -66,10 +66,10 @@ shadow_filter = 1
 texture = ExtResource("5_lae3u")
 texture_scale = 14.0
 
-[node name="DialogManager" type="Node2D" parent="."]
-script = ExtResource("6_bx6ve")
+[node name="DialogManager" type="Node2D" parent="." unique_id=663227982]
+script = ExtResource("4_5gg3u")
 
-[node name="Nametag" type="Label" parent="."]
+[node name="Nametag" type="Label" parent="." unique_id=61086998]
 z_index = 10
 offset_left = -305.0
 offset_top = -116.0
@@ -83,13 +83,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=618482906]
 wait_time = 300.0
 
-[node name="FinishedQuest" type="AudioStreamPlayer2D" parent="."]
+[node name="FinishedQuest" type="AudioStreamPlayer2D" parent="." unique_id=1217266786]
 stream = ExtResource("6_fpgho")
 bus = &"SFX"
-area_mask = 0
 
 [connection signal="input_event" from="Area" to="." method="_on_area_input_event"]
 [connection signal="mouse_entered" from="Area" to="." method="_on_area_mouse_entered"]

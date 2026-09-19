@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://d4dbqrrqwxsb"]
+[gd_scene format=3 uid="uid://d4dbqrrqwxsb"]
 
-[ext_resource type="Script" path="res://Ship/Walls/Door/Door.gd" id="1_7o7ps"]
+[ext_resource type="Script" uid="uid://dwf48ihyd6vy8" path="res://Ship/Walls/Door/Door.cs" id="1_3pmyg"]
 [ext_resource type="Texture2D" uid="uid://dobw14md45sbd" path="res://Ship/wall_tilesheet.png" id="2_i5qhu"]
 [ext_resource type="AudioStream" uid="uid://cwein0j14w66f" path="res://Ship/Walls/Door/Sounds/DoorOpen.ogg" id="3_csbmj"]
 [ext_resource type="AudioStream" uid="uid://g7hp7ioikcwj" path="res://Ship/Walls/Door/Sounds/DoorClose.ogg" id="4_hv13g"]
@@ -36,7 +36,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_li4mh")
 }],
-"loop": false,
+"loop": 0,
 "name": &"closed",
 "speed": 3.0
 }, {
@@ -53,7 +53,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1iune")
 }],
-"loop": false,
+"loop": 0,
 "name": &"open",
 "speed": 3.0
 }]
@@ -103,125 +103,125 @@ polygon = PackedVector2Array(1, -8, 1, -6, 0, -6, 0, -2, 1, -2, 1, 2, 0, 2, 0, 6
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js5sb"]
 size = Vector2(160, 160)
 
-[node name="Door" type="Node2D"]
-script = ExtResource("1_7o7ps")
+[node name="Door" type="Node2D" unique_id=2098350599]
+script = ExtResource("1_3pmyg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=757502011]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_gghna")
 animation = &"closed"
 frame = 3
 
-[node name="Hitbox" type="Node2D" parent="."]
+[node name="Hitbox" type="Node2D" parent="." unique_id=1991156211]
 
-[node name="StaticBody2DSides" type="AnimatableBody2D" parent="Hitbox"]
+[node name="StaticBody2DSides" type="AnimatableBody2D" parent="Hitbox" unique_id=42783346]
 sync_to_physics = false
 
-[node name="Left" type="CollisionShape2D" parent="Hitbox/StaticBody2DSides"]
+[node name="Left" type="CollisionShape2D" parent="Hitbox/StaticBody2DSides" unique_id=1216274891]
 position = Vector2(-65, 0)
 shape = SubResource("RectangleShape2D_s3hcj")
 
-[node name="Right" type="CollisionShape2D" parent="Hitbox/StaticBody2DSides"]
+[node name="Right" type="CollisionShape2D" parent="Hitbox/StaticBody2DSides" unique_id=1814675169]
 position = Vector2(65, 0)
 shape = SubResource("RectangleShape2D_dr5sq")
 
-[node name="StaticBody2DWalkway" type="AnimatableBody2D" parent="Hitbox"]
+[node name="StaticBody2DWalkway" type="AnimatableBody2D" parent="Hitbox" unique_id=1137203653]
 sync_to_physics = false
 
-[node name="Walkway" type="CollisionShape2D" parent="Hitbox/StaticBody2DWalkway"]
+[node name="Walkway" type="CollisionShape2D" parent="Hitbox/StaticBody2DWalkway" unique_id=1491024816]
 shape = SubResource("RectangleShape2D_q8qwe")
 
-[node name="AnimatedHitbox" type="Node2D" parent="Hitbox"]
+[node name="AnimatedHitbox" type="Node2D" parent="Hitbox" unique_id=556209511]
 scale = Vector2(5, 5)
 
-[node name="0left" type="AnimatableBody2D" parent="Hitbox/AnimatedHitbox"]
+[node name="0left" type="AnimatableBody2D" parent="Hitbox/AnimatedHitbox" unique_id=1897509613]
 sync_to_physics = false
 
-[node name="hitbox" type="CollisionShape2D" parent="Hitbox/AnimatedHitbox/0left"]
+[node name="hitbox" type="CollisionShape2D" parent="Hitbox/AnimatedHitbox/0left" unique_id=2134646379]
 position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_wesoy")
 
-[node name="1left" type="AnimatableBody2D" parent="Hitbox/AnimatedHitbox"]
+[node name="1left" type="AnimatableBody2D" parent="Hitbox/AnimatedHitbox" unique_id=1778868101]
 sync_to_physics = false
 
-[node name="hitbox" type="CollisionShape2D" parent="Hitbox/AnimatedHitbox/1left"]
+[node name="hitbox" type="CollisionShape2D" parent="Hitbox/AnimatedHitbox/1left" unique_id=928415577]
 position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_dhujy")
 
-[node name="0right" type="AnimatableBody2D" parent="Hitbox/AnimatedHitbox"]
+[node name="0right" type="AnimatableBody2D" parent="Hitbox/AnimatedHitbox" unique_id=1091399051]
 sync_to_physics = false
 
-[node name="hitbox" type="CollisionShape2D" parent="Hitbox/AnimatedHitbox/0right"]
+[node name="hitbox" type="CollisionShape2D" parent="Hitbox/AnimatedHitbox/0right" unique_id=1496768521]
 position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_olnpt")
 
-[node name="1right" type="AnimatableBody2D" parent="Hitbox/AnimatedHitbox"]
+[node name="1right" type="AnimatableBody2D" parent="Hitbox/AnimatedHitbox" unique_id=533737793]
 sync_to_physics = false
 
-[node name="hitbox" type="CollisionShape2D" parent="Hitbox/AnimatedHitbox/1right"]
+[node name="hitbox" type="CollisionShape2D" parent="Hitbox/AnimatedHitbox/1right" unique_id=1906947332]
 position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_pbgdf")
 
-[node name="LeftOccluder" type="LightOccluder2D" parent="Hitbox"]
+[node name="LeftOccluder" type="LightOccluder2D" parent="Hitbox" unique_id=1786604753]
 scale = Vector2(5, 5)
 occluder = SubResource("OccluderPolygon2D_r27t5")
 
-[node name="RightOccluder" type="LightOccluder2D" parent="Hitbox"]
+[node name="RightOccluder" type="LightOccluder2D" parent="Hitbox" unique_id=1371782155]
 scale = Vector2(5, 5)
 occluder = SubResource("OccluderPolygon2D_pyetu")
 
-[node name="AnimatedOccluders" type="Node2D" parent="Hitbox"]
+[node name="AnimatedOccluders" type="Node2D" parent="Hitbox" unique_id=471310124]
 scale = Vector2(5, 5)
 
-[node name="0left" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders"]
+[node name="0left" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders" unique_id=1857763460]
 occluder = SubResource("OccluderPolygon2D_omlib")
 
-[node name="1left" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders"]
+[node name="1left" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders" unique_id=2141324625]
 position = Vector2(3, 0)
 occluder = SubResource("OccluderPolygon2D_12g3c")
 
-[node name="0right" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders"]
+[node name="0right" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders" unique_id=930132800]
 occluder = SubResource("OccluderPolygon2D_rrcxo")
 
-[node name="1right" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders"]
+[node name="1right" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders" unique_id=1738061121]
 position = Vector2(-3, 0)
 occluder = SubResource("OccluderPolygon2D_q8ih3")
 
-[node name="2center" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders"]
+[node name="2center" type="LightOccluder2D" parent="Hitbox/AnimatedOccluders" unique_id=1621339691]
 position = Vector2(-3, 0)
 occluder = SubResource("OccluderPolygon2D_jw75i")
 
-[node name="Area" type="Node2D" parent="Hitbox"]
+[node name="Area" type="Node2D" parent="Hitbox" unique_id=646844470]
 
-[node name="MouseHitbox" type="Area2D" parent="Hitbox/Area"]
+[node name="MouseHitbox" type="Area2D" parent="Hitbox/Area" unique_id=583203093]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/Area/MouseHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/Area/MouseHitbox" unique_id=1995778733]
 shape = SubResource("RectangleShape2D_js5sb")
 
-[node name="Area2D" type="Area2D" parent="Hitbox/Area"]
+[node name="Area2D" type="Area2D" parent="Hitbox/Area" unique_id=499585358]
 visible = false
 collision_layer = 16
 collision_mask = 16
 
-[node name="Walkway" type="CollisionShape2D" parent="Hitbox/Area/Area2D"]
+[node name="Walkway" type="CollisionShape2D" parent="Hitbox/Area/Area2D" unique_id=110191368]
 shape = SubResource("RectangleShape2D_q8qwe")
 
-[node name="Sound" type="Node2D" parent="."]
+[node name="Sound" type="Node2D" parent="." unique_id=415147583]
 visible = false
 
-[node name="DoorOpen" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="DoorOpen" type="AudioStreamPlayer2D" parent="Sound" unique_id=2114347255]
 stream = ExtResource("3_csbmj")
 max_distance = 4000.0
 attenuation = 4.0
 bus = &"SFX"
 
-[node name="DoorClose" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="DoorClose" type="AudioStreamPlayer2D" parent="Sound" unique_id=809011292]
 stream = ExtResource("4_hv13g")
 max_distance = 4000.0
 attenuation = 4.0
 bus = &"SFX"
 
-[node name="AutocloseTimer" type="Timer" parent="."]
+[node name="AutocloseTimer" type="Timer" parent="." unique_id=1718246183]
 wait_time = 30.0
 one_shot = true
 

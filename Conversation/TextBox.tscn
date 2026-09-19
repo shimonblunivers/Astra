@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cssgchvxfgjg0"]
+[gd_scene format=3 uid="uid://cssgchvxfgjg0"]
 
-[ext_resource type="Script" path="res://Conversation/TextBox.gd" id="1_jnrn5"]
+[ext_resource type="Script" uid="uid://bhu7rbc1s6k7p" path="res://Conversation/TextBox.cs" id="1_70di3"]
 [ext_resource type="Texture2D" uid="uid://bmoi2ue2u4of6" path="res://Conversation/TextBox.png" id="1_yp0rx"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="2_amn58"]
 
@@ -8,12 +8,12 @@
 base_font = ExtResource("2_amn58")
 spacing_top = -10
 
-[node name="DialogBox" type="MarginContainer"]
+[node name="TextBox" type="MarginContainer" unique_id=1248710215]
 offset_right = 64.0
 offset_bottom = 32.0
-script = ExtResource("1_jnrn5")
+script = ExtResource("1_70di3")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1421494165]
 layout_mode = 2
 texture = ExtResource("1_yp0rx")
 region_rect = Rect2(0, 0, 48, 48)
@@ -24,14 +24,14 @@ patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=593062639]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=149627385]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -40,7 +40,7 @@ theme_override_fonts/font = SubResource("FontVariation_8k2ra")
 theme_override_font_sizes/font_size = 16
 vertical_alignment = 1
 
-[node name="LetterDisplayTimer" type="Timer" parent="."]
+[node name="LetterDisplayTimer" type="Timer" parent="." unique_id=477359560]
 one_shot = true
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhfy34lbk6ggm"]
+[gd_scene format=3 uid="uid://dhfy34lbk6ggm"]
 
-[ext_resource type="Script" path="res://Ship/Walls/Floor/Floor.gd" id="1_s06mp"]
+[ext_resource type="Script" uid="uid://svp1mot4k5vy" path="res://Ship/Walls/Floor/Floor.cs" id="1_05bbe"]
 [ext_resource type="Texture2D" uid="uid://dobw14md45sbd" path="res://Ship/wall_tilesheet.png" id="2_ivfbr"]
 [ext_resource type="Texture2D" uid="uid://dql1xnhfuwip2" path="res://Ship/Destroyable/crack0.png" id="3_l1rcu"]
 [ext_resource type="Texture2D" uid="uid://cr3gytjseicgi" path="res://Ship/Destroyable/crack1.png" id="4_77fho"]
@@ -25,7 +25,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_epdfu")
 }],
-"loop": false,
+"loop": 0,
 "name": &"crack",
 "speed": 0.0
 }]
@@ -33,24 +33,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2q75"]
 size = Vector2(160, 160)
 
-[node name="Floor" type="Node2D"]
-script = ExtResource("1_s06mp")
+[node name="Floor" type="Node2D" unique_id=66403421]
+script = ExtResource("1_05bbe")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=976603511]
 z_index = -1
 position = Vector2(1.90735e-06, 0)
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_k627v")
 
-[node name="Cracks" type="AnimatedSprite2D" parent="."]
+[node name="Cracks" type="AnimatedSprite2D" parent="." unique_id=2062933295]
 visible = false
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_w35h2")
 animation = &"crack"
 
-[node name="Hitbox" type="AnimatableBody2D" parent="."]
+[node name="Hitbox" type="AnimatableBody2D" parent="." unique_id=1708299307]
 collision_layer = 0
 sync_to_physics = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=637995330]
 shape = SubResource("RectangleShape2D_w2q75")

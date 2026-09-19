@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs6l8823h3hl5"]
+[gd_scene format=3 uid="uid://cs6l8823h3hl5"]
 
-[ext_resource type="Script" path="res://UI/ButtonIndicator.gd" id="1_l1y7c"]
+[ext_resource type="Script" uid="uid://chosq7dwtymef" path="res://UI/ButtonIndicator.cs" id="1_0wo4j"]
 [ext_resource type="Texture2D" uid="uid://dupqnxljxfcol" path="res://UI/indicator.png" id="1_tim4s"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="2_4j1e3"]
 
-[node name="ButtonIndicator" type="Node2D"]
+[node name="ButtonIndicator" type="Node2D" unique_id=1216213973]
 z_index = 20
 z_as_relative = false
 scale = Vector2(0.75, 0.75)
-script = ExtResource("1_l1y7c")
+script = ExtResource("1_0wo4j")
 
-[node name="Background" type="NinePatchRect" parent="."]
+[node name="Background" type="NinePatchRect" parent="." unique_id=1422035698]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,7 +29,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Button" type="Label" parent="."]
+[node name="Button" type="Label" parent="." unique_id=553941447]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

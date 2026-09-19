@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8juqmqvh6edg"]
 
-[ext_resource type="Script" uid="uid://xsb5lj62l3n5" path="res://Character/Player/Player.gd" id="1_to8t1"]
+[ext_resource type="Script" uid="uid://cc48q8cwghnr4" path="res://Character/Player/Player.cs" id="1_vqqir"]
 [ext_resource type="Texture2D" uid="uid://bx3ntqyvpglvb" path="res://Character/Player/animations/death/00.png" id="2_0a7lx"]
 [ext_resource type="Texture2D" uid="uid://g8kmlxg16tj1" path="res://Character/Player/animations/idle/0.png" id="2_k3lh2"]
 [ext_resource type="Texture2D" uid="uid://cpdw4weam3bmh" path="res://Character/Player/animations/idle/1.png" id="3_j6xpt"]
@@ -176,7 +176,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=76866589 groups=["Character", "Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=76866589 node_paths=PackedStringArray("AnimatedSprite", "WalkSound", "Vision", "InteractArea", "RespawnTimer", "Pickup", "InvincibilityTimer", "LockRotationTimer") groups=["Character", "Player"]]
 z_index = 10
 y_sort_enabled = true
 collision_layer = 3
@@ -184,7 +184,15 @@ collision_mask = 3
 motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 4278190080
-script = ExtResource("1_to8t1")
+script = ExtResource("1_vqqir")
+AnimatedSprite = NodePath("AnimatedSprite2D")
+WalkSound = NodePath("Sounds/Walk")
+Vision = NodePath("Vision/Light")
+InteractArea = NodePath("InteractArea")
+RespawnTimer = NodePath("RespawnTimer")
+Pickup = NodePath("Pickup")
+InvincibilityTimer = NodePath("InvincibilityTimer")
+LockRotationTimer = NodePath("LockRotationTimer")
 
 [node name="Area" type="Area2D" parent="." unique_id=1870624867 groups=["CharacterArea", "PlayerArea"]]
 collision_layer = 16
@@ -268,7 +276,6 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[connection signal="health_updated_signal" from="." to="." method="_on_health_updated_signal"]
 [connection signal="area_entered" from="Pickup" to="." method="_on_pickup_area_entered"]
 [connection signal="area_exited" from="Pickup" to="." method="_on_pickup_area_exited"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

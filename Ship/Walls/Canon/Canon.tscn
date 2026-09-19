@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqhqp0ybxwwd8"]
+[gd_scene format=3 uid="uid://cqhqp0ybxwwd8"]
 
-[ext_resource type="Script" path="res://Ship/Walls/Canon/Canon.gd" id="1_bdwcy"]
+[ext_resource type="Script" uid="uid://beuftc3uy2pr6" path="res://Ship/Walls/Canon/Canon.cs" id="1_37i2e"]
 [ext_resource type="Texture2D" uid="uid://dobw14md45sbd" path="res://Ship/wall_tilesheet.png" id="2_n21g2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ihj"]
@@ -13,7 +13,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w3ihj")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default",
 "speed": 0.0
 }]
@@ -21,15 +21,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dtsi"]
 size = Vector2(128, 128)
 
-[node name="Canon" type="Node2D"]
-script = ExtResource("1_bdwcy")
+[node name="Canon" type="Node2D" unique_id=1304031762]
+script = ExtResource("1_37i2e")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=279016923]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_y1p5f")
 
-[node name="Hitbox" type="AnimatableBody2D" parent="."]
+[node name="Hitbox" type="AnimatableBody2D" parent="." unique_id=1112372638]
 sync_to_physics = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2003533785]
 shape = SubResource("RectangleShape2D_2dtsi")

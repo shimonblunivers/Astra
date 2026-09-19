@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Task" load_steps=4 format=3 uid="uid://b3tjplgnlxoeh"]
 
-[ext_resource type="Script" path="res://Quests/Goal.gd" id="1_ekbqv"]
-[ext_resource type="Script" path="res://Quests/Task.gd" id="1_y1w3f"]
+[ext_resource type="Script" path="res://Quests/Goal.cs" id="1_ekbqv"]
+[ext_resource type="Script" path="res://Quests/Task.cs" id="1_y1w3f"]
 
 [sub_resource type="Resource" id="Resource_ftbcn"]
 script = ExtResource("1_ekbqv")

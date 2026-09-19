@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsoc1y308e4ms"]
+[gd_scene format=3 uid="uid://dsoc1y308e4ms"]
 
-[ext_resource type="Script" path="res://Ship/Objects/Helm/Helm.gd" id="1_j0s6q"]
+[ext_resource type="Script" uid="uid://cqanxips71psj" path="res://Ship/Objects/Helm/Helm.cs" id="1_wx4sq"]
 [ext_resource type="Texture2D" uid="uid://l2irgva513of" path="res://Ship/object_tilesheet.png" id="2_2b2k8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i73xg"]
@@ -13,7 +13,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i73xg")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default",
 "speed": 0.0
 }]
@@ -21,22 +21,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htulb"]
 size = Vector2(50, 50)
 
-[node name="Helm" type="Node2D"]
+[node name="Helm" type="Node2D" unique_id=896808068]
 y_sort_enabled = true
 use_parent_material = true
-script = ExtResource("1_j0s6q")
+script = ExtResource("1_wx4sq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1763086700]
 y_sort_enabled = true
 use_parent_material = true
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_5n8kf")
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="InteractArea" type="Area2D" parent="." unique_id=1943541485]
 collision_layer = 16
 collision_mask = 16
 
-[node name="AreaHitbox" type="CollisionShape2D" parent="InteractArea"]
+[node name="AreaHitbox" type="CollisionShape2D" parent="InteractArea" unique_id=438856554]
 shape = SubResource("RectangleShape2D_htulb")
 
 [connection signal="area_entered" from="InteractArea" to="." method="_on_area_area_entered"]

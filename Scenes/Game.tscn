@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://dl36ukldy48vp"]
 
-[ext_resource type="Script" uid="uid://d4ktrxkvkwai" path="res://Settings/World.gd" id="1_4hqkb"]
-[ext_resource type="Script" uid="uid://c5bqqw4e1lqgy" path="res://Ship/ShipManager.gd" id="2_0gdpv"]
-[ext_resource type="Script" uid="uid://dap8fufnyqdv3" path="res://Backgrounds/Background.gd" id="2_mups5"]
+[ext_resource type="Script" uid="uid://7egmvb6n8pjc" path="res://Settings/World.cs" id="1_acvyw"]
+[ext_resource type="Script" uid="uid://d3sh3jdref5ec" path="res://Backgrounds/Background.cs" id="3_acvyw"]
 [ext_resource type="PackedScene" uid="uid://8juqmqvh6edg" path="res://Character/Player/Player.tscn" id="3_gb8si"]
 [ext_resource type="Shader" uid="uid://o8wa78170hns" path="res://Backgrounds/BackgroundShader.gdshader" id="3_htlho"]
 [ext_resource type="Texture2D" uid="uid://dkwpkswggbn7r" path="res://Backgrounds/further_bodies.png" id="4_7oqwe"]
 [ext_resource type="Texture2D" uid="uid://dhvixcsrhu5oc" path="res://Backgrounds/closer_bodies.png" id="5_mgng7"]
-[ext_resource type="Script" uid="uid://5kg5goatrsvm" path="res://UI/UIManager.gd" id="6_rstey"]
+[ext_resource type="Script" uid="uid://esfo00nm6isd" path="res://Ship/ShipManager.cs" id="7_acvyw"]
 [ext_resource type="Texture2D" uid="uid://b261eyjbhule7" path="res://UI/heart.png" id="7_kad54"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="7_xryl1"]
+[ext_resource type="Script" uid="uid://nk7wecquihou" path="res://UI/UIManager.cs" id="8_acvyw"]
 [ext_resource type="Texture2D" uid="uid://bb7iejyou2vsu" path="res://UI/currency.png" id="13_6sc61"]
 [ext_resource type="FontFile" uid="uid://dbekrgkvpg3lc" path="res://Fonts/SpaceMono-Bold.ttf" id="13_q4h4p"]
 [ext_resource type="Shader" uid="uid://bhl88as1v7var" path="res://UI/crt.gdshader" id="14_6itm1"]
@@ -32,7 +32,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_nrt3x")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default",
 "speed": 1.0
 }]
@@ -68,11 +68,12 @@ shader_parameter/crt_curve = 0.042
 shader_parameter/vignette_strength = 0.25
 
 [node name="World" type="Node2D" unique_id=1178883003]
-script = ExtResource("1_4hqkb")
+script = ExtResource("1_acvyw")
 metadata/_edit_vertical_guides_ = []
 
-[node name="Player" parent="." unique_id=1569062007 instance=ExtResource("3_gb8si")]
+[node name="Player" parent="." unique_id=1569062007 node_paths=PackedStringArray("Camera") instance=ExtResource("3_gb8si")]
 position = Vector2(640, 360)
+Camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=988420509]
 ignore_rotation = false
@@ -89,14 +90,14 @@ drag_bottom_margin = 0.0
 [node name="Background" type="CanvasGroup" parent="Player" unique_id=1846078924]
 texture_repeat = 2
 scale = Vector2(7, 7)
-script = ExtResource("2_mups5")
+script = ExtResource("3_acvyw")
 
 [node name="Further" type="Sprite2D" parent="Player/Background" unique_id=1046916117]
 z_index = -10
 z_as_relative = false
 texture_repeat = 2
 material = SubResource("ShaderMaterial_3yehe")
-position = Vector2(-107.714, 71.4286)
+position = Vector2(-108, 71.57143)
 texture = ExtResource("4_7oqwe")
 region_enabled = true
 region_rect = Rect2(0, 0, 2048, 2048)
@@ -111,7 +112,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 2048, 2048)
 
 [node name="Ships" type="Node2D" parent="." unique_id=1437151924]
-script = ExtResource("2_0gdpv")
+script = ExtResource("7_acvyw")
 
 [node name="FloatingObjects" type="Node2D" parent="." unique_id=1692689100]
 
@@ -122,7 +123,7 @@ color = Color(0.678431, 0.678431, 0.678431, 1)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1227258861]
 layer = 2
-script = ExtResource("6_rstey")
+script = ExtResource("8_acvyw")
 
 [node name="Debug" type="CanvasGroup" parent="UI" unique_id=1816225973]
 
@@ -466,7 +467,6 @@ stream = ExtResource("14_n5bns")
 autoplay = true
 bus = &"Music"
 
-[connection signal="currency_updated_signal" from="Player" to="UI" method="_on_player_currency_updated_signal"]
 [connection signal="meta_clicked" from="UI/HUD/Inventory/QuestLog/RichTextLabel" to="UI" method="_on_quest_meta_clicked"]
 [connection signal="meta_clicked" from="UI/HUD/Inventory/MainStationLabel" to="UI" method="_on_quest_meta_clicked"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

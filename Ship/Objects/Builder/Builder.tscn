@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsmgi5uubxp1u"]
+[gd_scene format=3 uid="uid://bsmgi5uubxp1u"]
 
+[ext_resource type="Script" uid="uid://drk1nmgoggdmb" path="res://Ship/Objects/Builder/Builder.cs" id="1_4xixk"]
 [ext_resource type="Texture2D" uid="uid://l2irgva513of" path="res://Ship/object_tilesheet.png" id="1_chrf0"]
-[ext_resource type="Script" path="res://Ship/Objects/Builder/Builder.gd" id="1_vtmal"]
 [ext_resource type="AudioStream" uid="uid://nfs44tqevhoj" path="res://Ship/Objects/Builder/deploy.mp3" id="3_7jxf2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ki37s"]
@@ -14,7 +14,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ki37s")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default",
 "speed": 0.0
 }]
@@ -28,41 +28,40 @@ size = Vector2(80, 80)
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2ax6"]
 radius = 30.0
 
-[node name="Builder" type="Node2D"]
+[node name="Builder" type="Node2D" unique_id=23304204]
 y_sort_enabled = true
 use_parent_material = true
-script = ExtResource("1_vtmal")
+script = ExtResource("1_4xixk")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=298643020]
 use_parent_material = true
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_he15l")
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="InteractArea" type="Area2D" parent="." unique_id=255459377]
 collision_layer = 16
 collision_mask = 16
 
-[node name="AreaHitbox" type="CollisionShape2D" parent="InteractArea"]
+[node name="AreaHitbox" type="CollisionShape2D" parent="InteractArea" unique_id=115104544]
 shape = SubResource("RectangleShape2D_xhlxu")
 
-[node name="Hitbox" type="AnimatableBody2D" parent="."]
+[node name="Hitbox" type="AnimatableBody2D" parent="." unique_id=2061745225]
 sync_to_physics = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1445754138]
 shape = SubResource("RectangleShape2D_ne1n5")
 
-[node name="ConnectorFinder" type="Area2D" parent="."]
+[node name="ConnectorFinder" type="Area2D" parent="." unique_id=1799233848]
 collision_layer = 0
 collision_mask = 2048
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectorFinder"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectorFinder" unique_id=1675587703]
 shape = SubResource("CircleShape2D_p2ax6")
 
-[node name="DeploySound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeploySound" type="AudioStreamPlayer2D" parent="." unique_id=642772562]
 stream = ExtResource("3_7jxf2")
 volume_db = 2.0
 bus = &"SFX"
-area_mask = 0
 
 [connection signal="area_entered" from="InteractArea" to="." method="_on_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_area_area_exited"]

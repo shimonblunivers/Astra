@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dai6awjw4ywn7"]
+[gd_scene format=3 uid="uid://dai6awjw4ywn7"]
 
 [ext_resource type="TileSet" uid="uid://bfuqtumyjeq0m" path="res://Ship/WallTileMap.tres" id="1_6t3py"]
-[ext_resource type="Script" path="res://Ship/Ship.gd" id="1_set35"]
+[ext_resource type="Script" uid="uid://dmq2o02ap2g0d" path="res://Ship/Ship.cs" id="1_av5tj"]
 [ext_resource type="Texture2D" uid="uid://ds2tawebq6o8l" path="res://Effects/DebugTexture.png" id="2_akbyg"]
 [ext_resource type="TileSet" uid="uid://c5j4fanlmf5kc" path="res://Ship/ObjectTileMap.tres" id="2_qq4gy"]
-[ext_resource type="Script" path="res://Ship/WallTileMap.gd" id="3_cl687"]
+[ext_resource type="Script" uid="uid://dsgxgpvjic1lo" path="res://Ship/WallTileMap.cs" id="4_av5tj"]
 [ext_resource type="Material" uid="uid://uq84s01yuksa" path="res://Ship/HideInShadowMaterial.tres" id="5_0qt56"]
-[ext_resource type="Script" path="res://Ship/ObjectTileMap.gd" id="5_rjigq"]
+[ext_resource type="Script" uid="uid://5endesu8uj12" path="res://Ship/ObjectTileMap.cs" id="6_mi5fi"]
 
-[node name="Ship" type="RigidBody2D"]
+[node name="Ship" type="RigidBody2D" unique_id=1608470112]
 z_index = -1
 y_sort_enabled = true
 collision_layer = 512
@@ -21,50 +21,50 @@ max_contacts_reported = 1
 linear_damp_mode = 1
 linear_damp = 0.123
 angular_damp = 5.0
-script = ExtResource("1_set35")
+script = ExtResource("1_av5tj")
 
-[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+[node name="Hitbox" type="CollisionPolygon2D" parent="." unique_id=2026300905]
 polygon = PackedVector2Array(0, 0, 1, 0, 1, -1, 0, -1)
 
-[node name="Area" type="Area2D" parent="." groups=["ShipArea"]]
+[node name="Area" type="Area2D" parent="." unique_id=1653538335 groups=["ShipArea"]]
 collision_layer = 256
 collision_mask = 256
 linear_damp = 0.0
 
-[node name="AreaHitbox" type="CollisionPolygon2D" parent="Area"]
+[node name="AreaHitbox" type="CollisionPolygon2D" parent="Area" unique_id=1903142289]
 polygon = PackedVector2Array(0, 0, 0, 0, 0, 0)
 
-[node name="Visual" type="Polygon2D" parent="."]
+[node name="Visual" type="Polygon2D" parent="." unique_id=1436997767]
 visible = false
 z_index = 9
 texture_repeat = 2
 color = Color(1, 0.396078, 0.988235, 0.12549)
 texture = ExtResource("2_akbyg")
 
-[node name="WallTileMap" type="TileMapLayer" parent="."]
+[node name="WallTileMap" type="TileMapLayer" parent="." unique_id=1949902260]
 visible = false
 tile_set = ExtResource("1_6t3py")
-script = ExtResource("3_cl687")
+script = ExtResource("4_av5tj")
 
-[node name="ObjectTileMap" type="TileMapLayer" parent="."]
+[node name="ObjectTileMap" type="TileMapLayer" parent="." unique_id=1787686327]
 visible = false
 z_index = 1
 tile_set = ExtResource("2_qq4gy")
-script = ExtResource("5_rjigq")
+script = ExtResource("6_mi5fi")
 
-[node name="WallTiles" type="Node2D" parent="."]
+[node name="WallTiles" type="Node2D" parent="." unique_id=1584544240]
 
-[node name="ObjectTiles" type="Node2D" parent="."]
+[node name="ObjectTiles" type="Node2D" parent="." unique_id=1830423084]
 y_sort_enabled = true
 material = ExtResource("5_0qt56")
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Items" type="Node2D" parent="." unique_id=454554835]
 y_sort_enabled = true
 
-[node name="Passengers" type="Node2D" parent="."]
+[node name="Passengers" type="Node2D" parent="." unique_id=988238333]
 y_sort_enabled = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=254583737]
 
 [connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
 [connection signal="area_exited" from="Area" to="." method="_on_area_area_exited"]

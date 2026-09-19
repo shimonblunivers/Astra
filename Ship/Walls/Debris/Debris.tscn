@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://2cotqviqoq1b"]
+[gd_scene format=3 uid="uid://2cotqviqoq1b"]
 
-[ext_resource type="Script" path="res://Ship/Walls/Debris/Debris.gd" id="1_7g71x"]
+[ext_resource type="Script" uid="uid://bkjhmislvnfen" path="res://Ship/Walls/Debris/Debris.cs" id="1_vle55"]
 [ext_resource type="Texture2D" uid="uid://dobw14md45sbd" path="res://Ship/wall_tilesheet.png" id="2_cyj6g"]
 [ext_resource type="AudioStream" uid="uid://dwejrw3lqdlww" path="res://Ship/Walls/Debris/Sounds/break.mp3" id="3_sjgw7"]
 
@@ -11,23 +11,23 @@ region = Rect2(0, 64, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c205f"]
 size = Vector2(160, 160)
 
-[node name="Debris" type="Node2D"]
-script = ExtResource("1_7g71x")
+[node name="Debris" type="Node2D" unique_id=2030736892]
+script = ExtResource("1_vle55")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2080040302]
 position = Vector2(1.90735e-06, 0)
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_pum8f")
 
-[node name="Hitbox" type="AnimatableBody2D" parent="."]
+[node name="Hitbox" type="AnimatableBody2D" parent="." unique_id=292949580]
 collision_layer = 0
 collision_mask = 0
 sync_to_physics = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=842588854]
 shape = SubResource("RectangleShape2D_c205f")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1722205885]
 visible = false
 offset_left = -16.0
 offset_top = -16.0
@@ -35,10 +35,10 @@ offset_right = 16.0
 offset_bottom = 16.0
 flat = true
 
-[node name="Labels" type="Node2D" parent="."]
+[node name="Labels" type="Node2D" parent="." unique_id=1566400586]
 visible = false
 
-[node name="Label" type="Label" parent="Labels"]
+[node name="Label" type="Label" parent="Labels" unique_id=844131033]
 offset_left = -35.0
 offset_top = -25.0
 offset_right = 103.0
@@ -46,16 +46,15 @@ offset_bottom = 1.0
 text = "Debris :("
 metadata/_edit_use_anchors_ = true
 
-[node name="ProgressBar" type="ProgressBar" parent="Labels"]
+[node name="ProgressBar" type="ProgressBar" parent="Labels" unique_id=1212020743]
 offset_right = 4.0
 offset_bottom = 27.0
 step = -0.01
 metadata/_edit_use_anchors_ = true
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=1434172713]
 
-[node name="Spawn" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Sounds" unique_id=586893427]
 stream = ExtResource("3_sjgw7")
 max_distance = 1000.0
 bus = &"SFX"
-area_mask = 0

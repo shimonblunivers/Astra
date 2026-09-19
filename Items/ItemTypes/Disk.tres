@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemType" load_steps=5 format=3 uid="uid://uwjh5j66jnlf"]
 
-[ext_resource type="Script" path="res://Items/ItemType.gd" id="1_wwmus"]
+[ext_resource type="Script" path="res://Items/ItemType.cs" id="1_wwmus"]
 [ext_resource type="Texture2D" uid="uid://6nbohnntbvf8" path="res://Items/items_tilesheet.png" id="2_yyop7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dle0x"]

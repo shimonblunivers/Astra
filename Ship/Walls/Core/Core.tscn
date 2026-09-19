@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://h0pj3kalpf7g"]
+[gd_scene format=3 uid="uid://h0pj3kalpf7g"]
 
-[ext_resource type="Script" path="res://Ship/Walls/Core/Core.gd" id="1_e3f1m"]
 [ext_resource type="Material" uid="uid://uq84s01yuksa" path="res://Ship/HideInShadowMaterial.tres" id="1_h01wu"]
+[ext_resource type="Script" uid="uid://2vsnkhuj78e1" path="res://Ship/Walls/Core/Core.cs" id="2_djovy"]
 [ext_resource type="Texture2D" uid="uid://dobw14md45sbd" path="res://Ship/wall_tilesheet.png" id="3_p3fne"]
 [ext_resource type="AudioStream" uid="uid://ca1o5xprhwpdw" path="res://Ship/Walls/Core/humming.wav" id="4_3sfkc"]
 
@@ -36,7 +36,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3bqcp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 3.0
 }]
@@ -47,36 +47,35 @@ size = Vector2(160, 160)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4llso"]
 size = Vector2(200, 200)
 
-[node name="Core" type="Node2D"]
+[node name="Core" type="Node2D" unique_id=1843135753]
 material = ExtResource("1_h01wu")
-script = ExtResource("1_e3f1m")
+script = ExtResource("2_djovy")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=539719777]
 use_parent_material = true
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_deqa2")
 autoplay = "default"
 
-[node name="Hitbox" type="AnimatableBody2D" parent="."]
+[node name="Hitbox" type="AnimatableBody2D" parent="." unique_id=1643890353]
 sync_to_physics = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2093316889]
 shape = SubResource("RectangleShape2D_yeoku")
 
-[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=679898572]
 stream = ExtResource("4_3sfkc")
 volume_db = -2.0
 autoplay = true
 max_distance = 800.0
 attenuation = 2.0
 bus = &"SFX"
-area_mask = 0
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="InteractArea" type="Area2D" parent="." unique_id=1787899114]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1310142033]
 shape = SubResource("RectangleShape2D_4llso")
 debug_color = Color(0.854902, 0.317647, 0.494118, 0.419608)
 

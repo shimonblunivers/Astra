@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt84xexnt8auw"]
+[gd_scene format=3 uid="uid://bt84xexnt8auw"]
 
-[ext_resource type="Script" path="res://Ship/Walls/Canon/Projectile.gd" id="1_3u0je"]
+[ext_resource type="Script" uid="uid://cv4v81e6r5f3f" path="res://Ship/Walls/Canon/Projectile.cs" id="1_tmxsi"]
 [ext_resource type="Texture2D" uid="uid://6nbohnntbvf8" path="res://Items/items_tilesheet.png" id="2_2ppb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm7t3"]
@@ -10,26 +10,25 @@ size = Vector2(14.4046, 16.4494)
 atlas = ExtResource("2_2ppb1")
 region = Rect2(0, 240, 16, 16)
 
-[node name="Projectile" type="CharacterBody2D"]
+[node name="Projectile" type="CharacterBody2D" unique_id=653644276]
 scale = Vector2(4, 4)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_3u0je")
-SPEED = 1000
+script = ExtResource("1_tmxsi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1445769235]
 position = Vector2(0, -1.19209e-07)
 scale = Vector2(1.11076, 0.486341)
 shape = SubResource("RectangleShape2D_wm7t3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=748963264]
 texture = SubResource("AtlasTexture_haprn")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1806980617]
 collision_layer = 32768
 collision_mask = 32768
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=507524414]
 position = Vector2(0, -1.19209e-07)
 scale = Vector2(1.11076, 0.486341)
 shape = SubResource("RectangleShape2D_wm7t3")

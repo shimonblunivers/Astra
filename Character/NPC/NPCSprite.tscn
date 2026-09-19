@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://bkv0eyk6hhdw5"]
+[gd_scene format=3 uid="uid://bkv0eyk6hhdw5"]
 
 [ext_resource type="Material" uid="uid://uq84s01yuksa" path="res://Ship/HideInShadowMaterial.tres" id="1_6dtsc"]
-[ext_resource type="Script" path="res://Character/NPC/NPCSprite.gd" id="1_6pl8c"]
+[ext_resource type="Script" uid="uid://xide7hwn7jxc" path="res://Character/NPC/NPCSprite.cs" id="1_v0l5l"]
 [ext_resource type="Texture2D" uid="uid://dx7mwyhs81cg3" path="res://Character/NPC/animations/skin.png" id="2_i7b75"]
 [ext_resource type="Texture2D" uid="uid://d4f5xftda6eu5" path="res://Character/NPC/animations/eyes.png" id="3_n5seo"]
 [ext_resource type="Texture2D" uid="uid://bwta6is2rs42h" path="res://Character/NPC/animations/hair.png" id="4_x8puo"]
@@ -22,7 +22,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_i7b75")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -60,7 +60,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 3.0
 }]
@@ -89,7 +89,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_fdkie")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 0.0
 }]
@@ -100,7 +100,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_6watv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -111,7 +111,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_am41b")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -122,15 +122,22 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_lhyu1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="NPCSprite" type="CanvasGroup"]
-script = ExtResource("1_6pl8c")
+[node name="NPCSprite" type="CanvasGroup" unique_id=778414823 node_paths=PackedStringArray("SkinNode", "EyesNode", "HairNode", "TorsoNode", "LegsNode", "BootsNode", "TimerNode")]
+script = ExtResource("1_v0l5l")
+SkinNode = NodePath("Skin")
+EyesNode = NodePath("Eyes")
+HairNode = NodePath("Hair")
+TorsoNode = NodePath("Torso")
+LegsNode = NodePath("Legs")
+BootsNode = NodePath("Boots")
+TimerNode = NodePath("Timer")
 
-[node name="Skin" type="AnimatedSprite2D" parent="."]
+[node name="Skin" type="AnimatedSprite2D" parent="." unique_id=256840241]
 modulate = Color(0.894118, 0.694118, 0.564706, 1)
 y_sort_enabled = true
 material = ExtResource("1_6dtsc")
@@ -139,7 +146,7 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_nf71f")
 offset = Vector2(0, -8.5)
 
-[node name="Eyes" type="AnimatedSprite2D" parent="."]
+[node name="Eyes" type="AnimatedSprite2D" parent="." unique_id=1435512907]
 modulate = Color(0.317647, 0.337255, 0.890196, 1)
 y_sort_enabled = true
 material = ExtResource("1_6dtsc")
@@ -148,7 +155,7 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_sget1")
 offset = Vector2(0, -8.5)
 
-[node name="Hair" type="AnimatedSprite2D" parent="."]
+[node name="Hair" type="AnimatedSprite2D" parent="." unique_id=594181229]
 modulate = Color(0.298039, 0.27451, 0.156863, 1)
 y_sort_enabled = true
 material = ExtResource("1_6dtsc")
@@ -158,7 +165,7 @@ sprite_frames = SubResource("SpriteFrames_t1o1e")
 frame = 6
 offset = Vector2(0, -8.5)
 
-[node name="Torso" type="AnimatedSprite2D" parent="."]
+[node name="Torso" type="AnimatedSprite2D" parent="." unique_id=2114467799]
 modulate = Color(0.45098, 0, 0.603922, 1)
 y_sort_enabled = true
 material = ExtResource("1_6dtsc")
@@ -167,7 +174,7 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_g25fr")
 offset = Vector2(0, -8.5)
 
-[node name="Legs" type="AnimatedSprite2D" parent="."]
+[node name="Legs" type="AnimatedSprite2D" parent="." unique_id=104406459]
 modulate = Color(0.690196, 0.690196, 0.690196, 1)
 y_sort_enabled = true
 material = ExtResource("1_6dtsc")
@@ -176,7 +183,7 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_yo5xk")
 offset = Vector2(0, -8.5)
 
-[node name="Boots" type="AnimatedSprite2D" parent="."]
+[node name="Boots" type="AnimatedSprite2D" parent="." unique_id=841602927]
 modulate = Color(0.0392157, 0.0392157, 0.0392157, 1)
 y_sort_enabled = true
 material = ExtResource("1_6dtsc")
@@ -185,7 +192,7 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_f8x78")
 offset = Vector2(0, -8.5)
 
-[node name="EditorLight" type="PointLight2D" parent="."]
+[node name="EditorLight" type="PointLight2D" parent="." unique_id=1118555612]
 position = Vector2(255, -55)
 editor_only = true
 color = Color(0.988235, 1, 1, 1)
@@ -195,5 +202,5 @@ shadow_filter = 1
 texture = ExtResource("8_he04e")
 texture_scale = 14.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1961077791]
 one_shot = true

@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bskns8g4we6m5"]
+[gd_scene format=3 uid="uid://bskns8g4we6m5"]
 
+[ext_resource type="Script" uid="uid://b4o52teoevx8d" path="res://Ship/Walls/Connector/Connector.cs" id="1_yfrlt"]
 [ext_resource type="Texture2D" uid="uid://dobw14md45sbd" path="res://Ship/wall_tilesheet.png" id="2_c2rcq"]
-[ext_resource type="Script" path="res://Ship/Walls/Connector/Connector.gd" id="2_cf7fn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwa0d"]
 atlas = ExtResource("2_c2rcq")
@@ -20,7 +20,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jbhl4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -34,41 +34,41 @@ polygon = PackedVector2Array(10, 8, 10, 5, 11, 5, 11, 4, 12, 4, 12, 1, -9, 1, -9
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krrr5"]
 size = Vector2(9, 40)
 
-[node name="Connector" type="Node2D"]
-script = ExtResource("2_cf7fn")
+[node name="Connector" type="Node2D" unique_id=1982120131]
+script = ExtResource("1_yfrlt")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=35357252]
 use_parent_material = true
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_fwb8b")
 
-[node name="Hitbox" type="AnimatableBody2D" parent="."]
+[node name="Hitbox" type="AnimatableBody2D" parent="." unique_id=175346312]
 collision_layer = 2049
 sync_to_physics = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=976895551]
 shape = SubResource("RectangleShape2D_yeoku")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=138592023]
 scale = Vector2(5, 5)
 occluder = SubResource("OccluderPolygon2D_npogu")
 
-[node name="ConnectorArea" type="Area2D" parent="."]
+[node name="ConnectorArea" type="Area2D" parent="." unique_id=62539601]
 collision_layer = 64
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectorArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectorArea" unique_id=1953132711]
 position = Vector2(78.5, 0)
 shape = SubResource("RectangleShape2D_krrr5")
 
-[node name="PinJoint2D1" type="PinJoint2D" parent="."]
+[node name="PinJoint2D1" type="PinJoint2D" parent="." unique_id=581667512]
 position = Vector2(80, -80)
 bias = 0.9
 disable_collision = false
 softness = 1.0
 angular_limit_enabled = true
 
-[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+[node name="PinJoint2D2" type="PinJoint2D" parent="." unique_id=1995072032]
 position = Vector2(80, 80)
 bias = 0.9
 disable_collision = false

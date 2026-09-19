@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://l3q2qeuplldf"]
 
-[ext_resource type="Script" uid="uid://d34qlqo2alssj" path="res://Backgrounds/Credits.gd" id="1_esd3n"]
+[ext_resource type="Script" uid="uid://2vtar7t20bht" path="res://Backgrounds/Credits.cs" id="1_lpub1"]
 [ext_resource type="Shader" uid="uid://cb6vhyfr81kji" path="res://UI/BackgroundMenuScroll.gdshader" id="1_n7784"]
 [ext_resource type="Texture2D" uid="uid://dkwpkswggbn7r" path="res://Backgrounds/further_bodies.png" id="2_gagu1"]
 [ext_resource type="Texture2D" uid="uid://dhvixcsrhu5oc" path="res://Backgrounds/closer_bodies.png" id="3_s7oer"]
@@ -19,7 +19,7 @@ shader_parameter/speed_divider = 10.0
 [node name="Credits" type="CanvasLayer" unique_id=1165965237]
 process_mode = 3
 layer = 4
-script = ExtResource("1_esd3n")
+script = ExtResource("1_lpub1")
 
 [node name="FurtherBackground" type="TextureRect" parent="." unique_id=1566925112]
 light_mask = 0
@@ -154,5 +154,3 @@ size_flags_vertical = 4
 theme = ExtResource("5_7qnag")
 theme_override_fonts/font = ExtResource("6_neagu")
 text = "Back"
-
-[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]

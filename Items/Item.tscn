@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b48f1gdguotxg"]
+[gd_scene format=3 uid="uid://b48f1gdguotxg"]
 
-[ext_resource type="Script" path="res://Items/Item.gd" id="1_ayom3"]
+[ext_resource type="Script" uid="uid://blfy338agdnse" path="res://Items/Item.cs" id="1_gqr7u"]
 [ext_resource type="Texture2D" uid="uid://dd6ut7tl0o22u" path="res://Lighting/light.png" id="2_qgjtl"]
 [ext_resource type="Material" uid="uid://uq84s01yuksa" path="res://Ship/HideInShadowMaterial.tres" id="3_l0kl1"]
 [ext_resource type="FontFile" uid="uid://bsei5thn81xxs" path="res://Fonts/SpaceMono-Regular.ttf" id="4_3uhcy"]
@@ -8,11 +8,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iykoa"]
 
-[node name="Item" type="Node2D"]
+[node name="Item" type="Node2D" unique_id=2038354443]
 y_sort_enabled = true
-script = ExtResource("1_ayom3")
+script = ExtResource("1_gqr7u")
 
-[node name="EditorLight" type="PointLight2D" parent="."]
+[node name="EditorLight" type="PointLight2D" parent="." unique_id=2082436334]
 position = Vector2(51.5874, -52.9795)
 editor_only = true
 color = Color(0.988235, 1, 1, 1)
@@ -22,20 +22,20 @@ shadow_filter = 1
 texture = ExtResource("2_qgjtl")
 texture_scale = 14.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1591997228]
 z_index = 10
 y_sort_enabled = true
 material = ExtResource("3_l0kl1")
 scale = Vector2(3, 3)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=218655868]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=444647988]
 shape = SubResource("RectangleShape2D_iykoa")
 
-[node name="Itemtag" type="Label" parent="."]
+[node name="Itemtag" type="Label" parent="." unique_id=518707604]
 visible = false
 z_index = 20
 material = ExtResource("3_l0kl1")
@@ -58,11 +58,10 @@ text = "asd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PickedUpSound" type="AudioStreamPlayer2D" parent="."]
+[node name="PickedUpSound" type="AudioStreamPlayer2D" parent="." unique_id=1585060971]
 stream = ExtResource("5_x1pal")
 volume_db = -8.0
 bus = &"SFX"
-area_mask = 0
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

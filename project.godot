@@ -24,14 +24,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://cbfti2pxoqkyn"
 
-[autoload]
-
-Limits="*res://Settings/Limits.gd"
-Options="*res://Settings/Options.gd"
-ObjectList="*res://Settings/ObjectList.gd"
-DialogManager="*res://Conversation/DialogManager.gd"
-QuestManager="*res://Quests/QuestManager.gd"
-
 [debug]
 
 gdscript/warnings/integer_division=0

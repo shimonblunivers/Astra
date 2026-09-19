@@ -6,18 +6,18 @@ class_name UIManager extends CanvasLayer
 
 @onready var death_screen = $HUD/DeathScreen
 
-@onready var _quest_label = $HUD/Inventory/QuestLog/RichTextLabel	
-@onready var _main_station_label = $HUD/Inventory/MainStationLabel	
+@onready var _quest_label = $HUD/Inventory/QuestLog/RichTextLabel
+@onready var _main_station_label = $HUD/Inventory/MainStationLabel
 
 @onready var inventory = $HUD/Inventory
 
 @onready var loading_screen_node = $HUD/LoadingScreen
-@onready var loading_screen_timer : Timer = $HUD/LoadingScreen/Timer
-@onready var loading_screen_bar : ProgressBar = $HUD/LoadingScreen/ProgressBar
-@onready var loading_screen_background : Node2D = $HUD/LoadingScreen/Background
+@onready var loading_screen_timer: Timer = $HUD/LoadingScreen/Timer
+@onready var loading_screen_bar: ProgressBar = $HUD/LoadingScreen/ProgressBar
+@onready var loading_screen_background: Node2D = $HUD/LoadingScreen/Background
 
-@onready var quest_arrow : AnimatedSprite2D = $HUD/QuestArrow/Arrow
-@onready var quest_arrow_distance_label : Label = $HUD/QuestArrow/Arrow/Distance
+@onready var quest_arrow: AnimatedSprite2D = $HUD/QuestArrow/Arrow
+@onready var quest_arrow_distance_label: Label = $HUD/QuestArrow/Arrow/Distance
 
 @onready var saving_screen_node = $HUD/SavingScreen
 
@@ -36,14 +36,14 @@ var inventory_positions = Vector2(0, -500) # open, closed
 @onready var floating = $Debug/Floating
 @onready var player_position = $Debug/PlayerPosition
 
-static func currency_change_effect(amount : int):
+static func currency_change_effect(amount: int):
 	var label
 	if amount > 0:
 		label = add_currency_label.duplicate()
-		label.text = "+" + str(amount)	
+		label.text = "+" + str(amount)
 	elif amount < 0:
 		label = remove_currency_label.duplicate()
-		label.text = str(amount)	
+		label.text = str(amount)
 	else: return
 	label.visible = true
 	currency_node.add_child(label)
@@ -61,8 +61,8 @@ static func currency_change_effect(amount : int):
 	
 func _ready():
 	instance = self
-	health_label.text = str(Player.main_player.health)
-	currency_label.text = str(Player.main_player.currency)
+	health_label.text = str(int(Player.main_player.health))
+	currency_label.text = str(int(Player.main_player.currency))
 	quest_label = _quest_label
 	main_station_label = _main_station_label
 	currency_node = $HUD/Currency
@@ -74,17 +74,17 @@ func _ready():
 	player_position.visible = Options.DEVELOPMENT_MODE
 
 func player_health_updated_signal() -> void:
-	health_label.text = str(Player.main_player.health)
-	death_screen.visible = !Player.main_player.alive 
+	health_label.text = str(int(Player.main_player.health))
+	death_screen.visible = !Player.main_player.alive
 	
 func _on_player_currency_updated_signal() -> void:
-	currency_label.text = str(Player.main_player.currency)
+	currency_label.text = str(int(Player.main_player.currency))
 
 
 var _vfx_muted = false
 static var loading_mute = false
 
-func loading_screen(time : float = 1.6):
+func loading_screen(time: float = 1.6):
 	if Options.DEVELOPMENT_MODE: return
 	loading_screen_node.visible = true
 	if AudioServer.is_bus_mute(AudioServer.get_bus_index("SFX")):
@@ -104,14 +104,12 @@ func loading_screen(time : float = 1.6):
 	tween.connect("finished", _clear_loading_screen)
 
 func _clear_loading_screen():
-	
 	loading_screen_node.visible = false
-	if !_vfx_muted: 
+	if !_vfx_muted:
 		loading_mute = false
 
-func saving_screen(time : float = 1.6):
+func saving_screen(time: float = 1.6):
 	# if Options.DEBUG_MODE: return
-	
 	saving_screen_node.visible = true
 	saving_screen_node.modulate = Color.WHITE
 	var tween = create_tween()
@@ -132,19 +130,19 @@ func _unhandled_input(event: InputEvent):
 		if inventory_open: tween.tween_property(inventory, "position", Vector2(inventory_positions.x, 0), duration).set_ease(Tween.EASE_OUT) # FIX VECTORS PLS
 		else: tween.tween_property(inventory, "position", Vector2(inventory_positions.y, 0), duration).set_ease(Tween.EASE_IN)
 
-func _on_quest_meta_clicked(meta:Variant) -> void:
-	if "cancel" in meta: 
+func _on_quest_meta_clicked(meta: Variant) -> void:
+	if "cancel" in meta:
 		QuestManager.get_quest(int(meta)).delete()
 		QuestManager.highlighted_quest_id = -1
 	elif "main_ship" in meta:
 		QuestManager.highlighted_quest_id = -1
-		QuestManager.highlight_main_station = !QuestManager.highlight_main_station	
+		QuestManager.highlight_main_station = !QuestManager.highlight_main_station
 	elif QuestManager.highlighted_quest_id == int(meta):
 		QuestManager.highlighted_quest_id = -1
-		QuestManager.highlight_main_station = false	
+		QuestManager.highlight_main_station = false
 	else:
 		QuestManager.highlighted_quest_id = int(meta)
-		QuestManager.highlight_main_station = false	
+		QuestManager.highlight_main_station = false
 		
 	QuestManager.update_quest_log()
 
@@ -155,7 +153,6 @@ func _process(_delta):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), loading_mute)
 	
 	if !loading_mute && Player.main_player.floating() != AudioServer.is_bus_mute(AudioServer.get_bus_index("SFX")):
-		
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), Player.main_player.floating())
 	
 
@@ -175,5 +172,3 @@ func _process(_delta):
 		var _scale = 0.65 + ratio * 10
 		loading_screen_background.scale = Vector2(_scale, _scale)
 		loading_screen_background.rotation = ratio * 2
-
-		

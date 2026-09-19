@@ -1,6 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://8juqmqvh6edg"]
+[gd_scene format=3 uid="uid://8juqmqvh6edg"]
 
-[ext_resource type="Script" path="res://Character/Player/Player.gd" id="1_to8t1"]
+[ext_resource type="Script" uid="uid://xsb5lj62l3n5" path="res://Character/Player/Player.gd" id="1_to8t1"]
 [ext_resource type="Texture2D" uid="uid://bx3ntqyvpglvb" path="res://Character/Player/animations/death/00.png" id="2_0a7lx"]
 [ext_resource type="Texture2D" uid="uid://g8kmlxg16tj1" path="res://Character/Player/animations/idle/0.png" id="2_k3lh2"]
 [ext_resource type="Texture2D" uid="uid://cpdw4weam3bmh" path="res://Character/Player/animations/idle/1.png" id="3_j6xpt"]
@@ -61,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_fcofo")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_j6xpt")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 3.0
 }, {
@@ -119,7 +119,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_hreaq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"WalkDown",
 "speed": 10.0
 }, {
@@ -148,7 +148,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_crpxx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"WalkToSide",
 "speed": 10.0
 }, {
@@ -171,12 +171,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("23_xjf2n")
 }],
-"loop": true,
+"loop": 1,
 "name": &"WalkUp",
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D" groups=["Character", "Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=76866589 groups=["Character", "Player"]]
 z_index = 10
 y_sort_enabled = true
 collision_layer = 3
@@ -186,33 +186,33 @@ platform_on_leave = 2
 platform_floor_layers = 4278190080
 script = ExtResource("1_to8t1")
 
-[node name="Area" type="Area2D" parent="." groups=["CharacterArea", "PlayerArea"]]
+[node name="Area" type="Area2D" parent="." unique_id=1870624867 groups=["CharacterArea", "PlayerArea"]]
 collision_layer = 16
 collision_mask = 16
 
-[node name="BodyHitbox" type="CollisionShape2D" parent="Area"]
+[node name="BodyHitbox" type="CollisionShape2D" parent="Area" unique_id=1120132456]
 shape = SubResource("CircleShape2D_yjh8y")
 
-[node name="InteractArea" type="Area2D" parent="." groups=["CharacterInteractArea", "PlayerInteractArea"]]
+[node name="InteractArea" type="Area2D" parent="." unique_id=313760532 groups=["CharacterInteractArea", "PlayerInteractArea"]]
 position = Vector2(0, -42.5)
 collision_layer = 272
 collision_mask = 272
 
-[node name="InteractLegHitbox" type="CollisionShape2D" parent="InteractArea"]
+[node name="InteractLegHitbox" type="CollisionShape2D" parent="InteractArea" unique_id=959515871]
 position = Vector2(0, 42.5)
 shape = SubResource("CircleShape2D_ycmu8")
 
-[node name="Pickup" type="Area2D" parent="."]
+[node name="Pickup" type="Area2D" parent="." unique_id=217961252]
 collision_layer = 4
 collision_mask = 4
 
-[node name="Range" type="CollisionShape2D" parent="Pickup"]
+[node name="Range" type="CollisionShape2D" parent="Pickup" unique_id=1400575634]
 shape = SubResource("CircleShape2D_eo3g1")
 
-[node name="LegHitbox" type="CollisionShape2D" parent="."]
+[node name="LegHitbox" type="CollisionShape2D" parent="." unique_id=913773047]
 shape = SubResource("CircleShape2D_637f7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1496618392]
 light_mask = 2
 y_sort_enabled = true
 scale = Vector2(5, 5)
@@ -221,9 +221,9 @@ animation = &"Idle"
 autoplay = "Idle"
 offset = Vector2(0, -8.5)
 
-[node name="Vision" type="Node2D" parent="."]
+[node name="Vision" type="Node2D" parent="." unique_id=2019545214]
 
-[node name="Light" type="PointLight2D" parent="Vision"]
+[node name="Light" type="PointLight2D" parent="Vision" unique_id=2029322649]
 color = Color(0.784314, 0.784314, 0.784314, 1)
 energy = 0.5
 shadow_enabled = true
@@ -231,7 +231,7 @@ shadow_filter = 1
 texture = ExtResource("11_o2d8h")
 texture_scale = 4.0
 
-[node name="Internal" type="PointLight2D" parent="Vision"]
+[node name="Internal" type="PointLight2D" parent="Vision" unique_id=1332053903]
 light_mask = 2
 position = Vector2(0, -42.5)
 energy = 0.25
@@ -242,29 +242,29 @@ shadow_filter_smooth = 50.0
 texture = ExtResource("11_o2d8h")
 texture_scale = 3.0
 
-[node name="AudioListener" type="AudioListener2D" parent="."]
+[node name="AudioListener" type="AudioListener2D" parent="." unique_id=1098619257]
 current = true
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=702332799]
 
-[node name="Walk" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="Walk" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1156311188]
 stream = ExtResource("15_c0vio")
 volume_db = -1.0
 max_distance = 1000.0
 bus = &"SFX"
 
-[node name="Effects" type="Node2D" parent="."]
+[node name="Effects" type="Node2D" parent="." unique_id=819755448]
 
-[node name="RespawnTimer" type="Timer" parent="."]
+[node name="RespawnTimer" type="Timer" parent="." unique_id=192357838]
 process_callback = 0
 wait_time = 2.0
 one_shot = true
 
-[node name="InvincibilityTimer" type="Timer" parent="."]
+[node name="InvincibilityTimer" type="Timer" parent="." unique_id=1677515514]
 wait_time = 0.25
 one_shot = true
 
-[node name="LockRotationTimer" type="Timer" parent="."]
+[node name="LockRotationTimer" type="Timer" parent="." unique_id=1784258671]
 wait_time = 0.1
 one_shot = true
 

@@ -58,7 +58,7 @@ func _process(_delta):
 
 			if distance < 999999 && distance > maximal_range:
 				UIManager.instance.quest_arrow_distance_label.rotation = - UIManager.instance.quest_arrow.rotation
-				UIManager.instance.quest_arrow_distance_label.text = str(round(distance / 100)) + "m"
+				UIManager.instance.quest_arrow_distance_label.text = str(int(round(distance / 100))) + "m"
 			else:
 				UIManager.instance.quest_arrow_distance_label.text = ""
 

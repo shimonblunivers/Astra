@@ -83,6 +83,9 @@ alignment = 1
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1468586524]
 light_mask = 0
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../NewGame")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Quit")
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
 text = "Play"
@@ -90,6 +93,10 @@ text = "Play"
 [node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1554523788]
 light_mask = 0
 layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Play")
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
 text = "New game"
@@ -97,6 +104,10 @@ text = "New game"
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1087153457]
 light_mask = 0
 layout_mode = 2
+focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_bottom = NodePath("../Credits")
+focus_next = NodePath("../Credits")
+focus_previous = NodePath("../NewGame")
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
 text = "Settings"
@@ -104,6 +115,10 @@ text = "Settings"
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer" unique_id=40463317]
 light_mask = 0
 layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Settings")
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
 text = "Credits
@@ -112,6 +127,9 @@ text = "Credits
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=175936309]
 light_mask = 0
 layout_mode = 2
+focus_neighbor_top = NodePath("../Credits")
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Credits")
 theme = ExtResource("4_buhup")
 theme_override_fonts/font = ExtResource("2_ese6g")
 text = "Quit"

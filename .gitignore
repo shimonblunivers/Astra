@@ -19,3 +19,5 @@ mono_crash.*.json
 # VSCode-specific ignores
 ./vs
 ./vscode
+
+Export/

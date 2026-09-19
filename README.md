@@ -21,4 +21,4 @@ Open inventory - TAB <br/>
 Rotate objects - R <br/>
 Exit editor - ESC <br/>
 
-## Godot 4.6.2
+## Godot 4.7.2

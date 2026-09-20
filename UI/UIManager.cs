@@ -4,19 +4,19 @@ using System;
 [GlobalClass]
 public partial class UIManager : CanvasLayer
 {
-    [Export] public Label HealthLabel { get; set; }
-    [Export] public Label CurrencyLabel { get; set; }
+    [Export] public RichTextLabel HealthLabel { get; set; }
+    [Export] public RichTextLabel CurrencyLabel { get; set; }
     [Export] public Control DeathScreen { get; set; }
     [Export] public RichTextLabel QuestLabelNode { get; set; }
-    [Export] public Label MainStationLabelNode { get; set; }
+    [Export] public RichTextLabel MainStationLabelNode { get; set; }
     [Export] public Control Inventory { get; set; }
 
     [Export] public Control LoadingScreenNode { get; set; }
     [Export] public Timer LoadingScreenTimer { get; set; }
     [Export] public ProgressBar LoadingScreenBar { get; set; }
-    [Export] public Node2D LoadingScreenBackground { get; set; }
+    [Export] public Control LoadingScreenBackground { get; set; }
 
-    [Export] public AnimatedSprite2D QuestArrow { get; set; }
+    [Export] public Sprite2D QuestArrow { get; set; }
     [Export] public Label QuestArrowDistanceLabel { get; set; }
 
     [Export] public Control SavingScreenNode { get; set; }
@@ -31,7 +31,7 @@ public partial class UIManager : CanvasLayer
     [Export] public Vector2 InventoryClosedPosition { get; set; } = new Vector2(0, -500);
 
     public static RichTextLabel QuestLabel { get; set; }
-    public static Label MainStationLabel { get; set; }
+    public static RichTextLabel MainStationLabel { get; set; }
     public static Label StaticAddCurrencyLabel { get; set; }
     public static Label StaticRemoveCurrencyLabel { get; set; }
     public static Control StaticCurrencyNode { get; set; }
@@ -48,19 +48,19 @@ public partial class UIManager : CanvasLayer
     {
         Instance = this;
 
-        HealthLabel ??= GetNodeOrNull<Label>("HUD/HealthBar/Value");
-        CurrencyLabel ??= GetNodeOrNull<Label>("HUD/Currency/Value");
+        HealthLabel ??= GetNodeOrNull<RichTextLabel>("HUD/HealthBar/Value");
+        CurrencyLabel ??= GetNodeOrNull<RichTextLabel>("HUD/Currency/Value");
         DeathScreen ??= GetNodeOrNull<Control>("HUD/DeathScreen");
         QuestLabelNode ??= GetNodeOrNull<RichTextLabel>("HUD/Inventory/QuestLog/RichTextLabel");
-        MainStationLabelNode ??= GetNodeOrNull<Label>("HUD/Inventory/MainStationLabel");
+        MainStationLabelNode ??= GetNodeOrNull<RichTextLabel>("HUD/Inventory/QuestLog/MainStationLabel");
         Inventory ??= GetNodeOrNull<Control>("HUD/Inventory");
 
         LoadingScreenNode ??= GetNodeOrNull<Control>("HUD/LoadingScreen");
         LoadingScreenTimer ??= GetNodeOrNull<Timer>("HUD/LoadingScreen/Timer");
         LoadingScreenBar ??= GetNodeOrNull<ProgressBar>("HUD/LoadingScreen/ProgressBar");
-        LoadingScreenBackground ??= GetNodeOrNull<Node2D>("HUD/LoadingScreen/Background");
+        LoadingScreenBackground ??= GetNodeOrNull<Control>("HUD/LoadingScreen/Background");
 
-        QuestArrow ??= GetNodeOrNull<AnimatedSprite2D>("HUD/QuestArrow/Arrow");
+        QuestArrow ??= GetNodeOrNull<Sprite2D>("HUD/QuestArrow/Arrow");
         QuestArrowDistanceLabel ??= GetNodeOrNull<Label>("HUD/QuestArrow/Arrow/Distance");
 
         SavingScreenNode ??= GetNodeOrNull<Control>("HUD/SavingScreen");

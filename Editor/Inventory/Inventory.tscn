@@ -16,8 +16,14 @@ anti_aliasing = false
 [sub_resource type="Theme" id="Theme_hqxyx"]
 Panel/styles/panel = SubResource("StyleBoxFlat_s6yrk")
 
-[node name="Inventory" type="Node2D" unique_id=1555508375]
+[node name="Inventory" type="Node2D" unique_id=1555508375 node_paths=PackedStringArray("Grid", "CurrencyNode", "CurrencyValue", "AddCurrencyLabel", "RemoveCurrencyLabel", "CurrencyTimer")]
 script = ExtResource("1_gprg0")
+Grid = NodePath("GridContainer")
+CurrencyNode = NodePath("Currency")
+CurrencyValue = NodePath("Currency/Value")
+AddCurrencyLabel = NodePath("Currency/AddCurrencyLabel")
+RemoveCurrencyLabel = NodePath("Currency/RemoveCurrencyLabel")
+CurrencyTimer = NodePath("Currency/Timer")
 
 [node name="Panel" type="Panel" parent="." unique_id=1600759823]
 anchors_preset = 5

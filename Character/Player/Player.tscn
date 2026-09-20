@@ -176,7 +176,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=76866589 node_paths=PackedStringArray("AnimatedSprite", "WalkSound", "Vision", "InteractArea", "RespawnTimer", "Pickup", "InvincibilityTimer", "LockRotationTimer") groups=["Character", "Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=76866589 node_paths=PackedStringArray("AnimatedSprite", "WalkSound", "Vision", "InteractArea", "RespawnTimer", "Pickup", "InvincibilityTimer", "LockRotationTimer", "Legs") groups=["Character", "Player"]]
 z_index = 10
 y_sort_enabled = true
 collision_layer = 3
@@ -193,6 +193,7 @@ RespawnTimer = NodePath("RespawnTimer")
 Pickup = NodePath("Pickup")
 InvincibilityTimer = NodePath("InvincibilityTimer")
 LockRotationTimer = NodePath("LockRotationTimer")
+Legs = NodePath("LegHitbox")
 
 [node name="Area" type="Area2D" parent="." unique_id=1870624867 groups=["CharacterArea", "PlayerArea"]]
 collision_layer = 16
